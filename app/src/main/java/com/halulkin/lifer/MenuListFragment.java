@@ -1,21 +1,30 @@
 package com.halulkin.lifer;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.halulkin.lifer.ScheduleFragment.ScheduleFragment;
+import com.halulkin.lifer.TargetsFragment.TargetsFragment;
 import com.squareup.picasso.Picasso;
 
 public class MenuListFragment extends Fragment {
 
     private ImageView ivMenuUserProfilePhoto;
+    private AppBarLayout appBarLayout;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
+    private View view;
+    private NavigationView vNavigation;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,21 +33,60 @@ public class MenuListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_menu, container,
+        view = inflater.inflate(R.layout.fragment_menu, container,
                 false);
 
-        NavigationView vNavigation = (NavigationView) view.findViewById(R.id.vNavigation);
+        appBarLayout = view.findViewById(R.id.appBarLayout);
+        collapsingToolbarLayout = view.findViewById(R.id.collapsingToolbarLayout);
+
+        vNavigation = (NavigationView) view.findViewById(R.id.vNavigation);
         vNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                Toast.makeText(getActivity(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
-                return false;
+                displaySelectedScreen(menuItem.getItemId());
+                return true;
             }
         });
 
         ivMenuUserProfilePhoto = vNavigation.getHeaderView(0).findViewById(R.id.profile_image);
         setupHeader();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+//        vNavigation.getMenu().getItem(0).setChecked(true);
+
+        displaySelectedScreen(R.id.nav_targets);
+        expandToolbar();
+
+    }
+
+    public void expandToolbar() {
+        appBarLayout.setExpanded(true, true);
+    }
+
+    private void displaySelectedScreen(int itemId) {
+        Fragment fragment = null;
+
+        switch (itemId) {
+            case R.id.nav_targets:
+                fragment = new TargetsFragment();
+                break;
+
+            case R.id.nav_schedule:
+                fragment = new ScheduleFragment();
+                break;
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.content_main_frame, fragment);
+            ft.commit();
+        }
     }
 
     private void setupHeader() {

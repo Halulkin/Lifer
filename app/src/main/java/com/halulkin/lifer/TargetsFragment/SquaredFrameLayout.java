@@ -1,4 +1,4 @@
-package com.halulkin.lifer;
+package com.halulkin.lifer.TargetsFragment;
 
 import android.annotation.TargetApi;
 import android.content.Context;

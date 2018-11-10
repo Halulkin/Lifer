@@ -3,8 +3,6 @@ package com.halulkin.lifer;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -14,22 +12,18 @@ import com.halulkin.lifer.flowingdrawer_core.FlowingDrawer;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView rvFeed;
-    private FlowingDrawer mDrawer;
+    public FlowingDrawer mDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rvFeed = (RecyclerView) findViewById(R.id.rvFeed);
         mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
 
-        rvFeed = (RecyclerView) findViewById(R.id.rvFeed);
-        mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
         mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
+
         setupToolbar();
-        setupFeed();
         setupMenu();
     }
 
@@ -44,19 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 mDrawer.toggleMenu();
             }
         });
-    }
-
-    private void setupFeed() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this) {
-            @Override
-            protected int getExtraLayoutSpace(RecyclerView.State state) {
-                return 300;
-            }
-        };
-        rvFeed.setLayoutManager(linearLayoutManager);
-        FeedAdapter feedAdapter = new FeedAdapter(this);
-        rvFeed.setAdapter(feedAdapter);
-        feedAdapter.updateItems();
     }
 
     private void setupMenu() {
@@ -80,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("MainActivity", "openRatio=" + openRatio + " ,offsetPixels=" + offsetPixels);
             }
         });
+    }
+
+
+    public void closeDrawer(){
+        mDrawer.closeMenu(true);
     }
 
     @Override
