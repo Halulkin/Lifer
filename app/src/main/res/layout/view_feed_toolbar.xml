@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/venom_artwork"
+        android:src="@drawable/life"
         app:layout_collapseMode="parallax"
         app:layout_collapseParallaxMultiplier="0.7" />
 
