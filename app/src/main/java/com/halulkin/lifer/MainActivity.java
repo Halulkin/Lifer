@@ -1,6 +1,8 @@
 package com.halulkin.lifer;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +15,8 @@ import com.halulkin.lifer.flowingdrawer_core.FlowingDrawer;
 public class MainActivity extends AppCompatActivity {
 
     public FlowingDrawer mDrawer;
+    private AppBarLayout appBarLayout;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +27,22 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
 
+        appBarLayout = findViewById(R.id.appBarLayout);
+        collapsingToolbarLayout = findViewById(R.id.collapsingToolbarLayout);
+
         setupToolbar();
         setupMenu();
+    }
+
+    public void expandToolbar() {
+        appBarLayout.setExpanded(true, true);
     }
 
     protected void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_menu_white);
+//        toolbar.setNavigationIcon(R.drawable.ic_menu_white);
+        toolbar.setNavigationIcon(R.drawable.ic_fingerprint);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

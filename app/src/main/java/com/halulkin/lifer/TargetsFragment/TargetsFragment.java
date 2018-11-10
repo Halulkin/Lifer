@@ -31,6 +31,7 @@ public class TargetsFragment extends Fragment {
         rvFeed = (RecyclerView) view.findViewById(R.id.rvFeed);
 
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
+        ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
 
         setupFeed();
     }

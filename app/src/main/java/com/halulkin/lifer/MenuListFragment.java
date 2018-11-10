@@ -3,8 +3,6 @@ package com.halulkin.lifer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -21,8 +19,7 @@ import com.squareup.picasso.Picasso;
 public class MenuListFragment extends Fragment {
 
     private ImageView ivMenuUserProfilePhoto;
-    private AppBarLayout appBarLayout;
-    private CollapsingToolbarLayout collapsingToolbarLayout;
+
     private View view;
     private NavigationView vNavigation;
 
@@ -36,8 +33,6 @@ public class MenuListFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_menu, container,
                 false);
 
-        appBarLayout = view.findViewById(R.id.appBarLayout);
-        collapsingToolbarLayout = view.findViewById(R.id.collapsingToolbarLayout);
 
         vNavigation = (NavigationView) view.findViewById(R.id.vNavigation);
         vNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -61,12 +56,6 @@ public class MenuListFragment extends Fragment {
 //        vNavigation.getMenu().getItem(0).setChecked(true);
 
         displaySelectedScreen(R.id.nav_targets);
-        expandToolbar();
-
-    }
-
-    public void expandToolbar() {
-        appBarLayout.setExpanded(true, true);
     }
 
     private void displaySelectedScreen(int itemId) {

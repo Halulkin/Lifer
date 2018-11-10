@@ -69,7 +69,7 @@ class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView textViewTime;
         TextView textViewName;
         TextView textViewDate;
-        CheckBox switchIcon;
+//        CheckBox customCheckBox;
 
         CellFeedViewHolder(View view) {
             super(view);
@@ -77,7 +77,7 @@ class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             textViewTime = (TextView) view.findViewById(R.id.textViewTime);
             textViewName = (TextView) view.findViewById(R.id.textViewName);
             textViewDate = (TextView) view.findViewById(R.id.textViewDate);
-            switchIcon = (CheckBox) view.findViewById(R.id.switchIcon);
+//            customCheckBox = (ShineButton) view.findViewById(R.id.po_image1);
 
         }
     }
