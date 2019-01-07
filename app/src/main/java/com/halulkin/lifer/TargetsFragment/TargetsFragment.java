@@ -12,11 +12,12 @@ import android.view.ViewGroup;
 import com.halulkin.lifer.MainActivity;
 import com.halulkin.lifer.R;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class TargetsFragment extends Fragment {
 
-    private RecyclerView rvFeed;
+    private RecyclerView rvTargets;
 
     @Nullable
     @Override
@@ -28,25 +29,52 @@ public class TargetsFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        rvFeed = (RecyclerView) view.findViewById(R.id.rvFeed);
+        rvTargets = (RecyclerView) view.findViewById(R.id.rvTargets);
 
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
         ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
 
-        setupFeed();
+        setupTargetsRecyclerView();
     }
 
+    private void setupTargetsRecyclerView() {
+        ArrayList<TargetsModel> targetsData = new ArrayList<>();
+        targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
+        targetsData.add(new TargetsModel("Run 1000 km", false));
+        targetsData.add(new TargetsModel("Learn full information about kotlin", false));
+        targetsData.add(new TargetsModel("Earn 1000 dollars", false));
+        targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
+        targetsData.add(new TargetsModel("Run 1000 km", false));
+        targetsData.add(new TargetsModel("Learn full information about kotlin", false));
+        targetsData.add(new TargetsModel("Earn 1000 dollars", false));
+        targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
+        targetsData.add(new TargetsModel("Run 1000 km", false));
+        targetsData.add(new TargetsModel("Learn full information about kotlin", false));
+        targetsData.add(new TargetsModel("Earn 1000 dollars", false));
+        targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
+        targetsData.add(new TargetsModel("Run 1000 km", false));
+        targetsData.add(new TargetsModel("Learn full information about kotlin", false));
+        targetsData.add(new TargetsModel("Earn 1000 dollars", false));
+        targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
+        targetsData.add(new TargetsModel("Run 1000 km", false));
+        targetsData.add(new TargetsModel("Learn full information about kotlin", false));
+        targetsData.add(new TargetsModel("Earn 1000 dollars", false));
+        targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
+        targetsData.add(new TargetsModel("Run 1000 km", false));
+        targetsData.add(new TargetsModel("Learn full information about kotlin", false));
+        targetsData.add(new TargetsModel("Earn 1000 dollars", false));
+        targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
+        targetsData.add(new TargetsModel("Run 1000 km", false));
+        targetsData.add(new TargetsModel("Learn full information about kotlin", false));
+        targetsData.add(new TargetsModel("Earn 1000 dollars", false));
+        targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
+        targetsData.add(new TargetsModel("Run 1000 km", false));
+        targetsData.add(new TargetsModel("Learn full information about kotlin", false));
+        targetsData.add(new TargetsModel("Earn 1000 dollars", false));
 
-    private void setupFeed() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext()) {
-            @Override
-            protected int getExtraLayoutSpace(RecyclerView.State state) {
-                return 300;
-            }
-        };
-        rvFeed.setLayoutManager(linearLayoutManager);
-        FeedAdapter feedAdapter = new FeedAdapter(getContext());
-        rvFeed.setAdapter(feedAdapter);
-        feedAdapter.updateItems();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rvTargets.setLayoutManager(linearLayoutManager);
+        TargetsAdapter targetsAdapter = new TargetsAdapter(getContext(), targetsData);
+        rvTargets.setAdapter(targetsAdapter);
     }
 }

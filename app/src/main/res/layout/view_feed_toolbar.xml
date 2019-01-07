@@ -9,8 +9,8 @@
     app:contentScrim="@color/style_color_primary"
     app:expandedTitleTextAppearance="@style/ExpandedTitle"
     app:layout_scrollFlags="scroll|exitUntilCollapsed"
-    app:scrimAnimationDuration="600"
-    app:scrimVisibleHeightTrigger="100dp"
+    app:scrimAnimationDuration="400"
+    app:scrimVisibleHeightTrigger="70dp"
     app:statusBarScrim="#20000000">
 
     <ImageView
