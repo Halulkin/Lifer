@@ -21,6 +21,7 @@
 
         <!-- The position of the drawer -->
         <attr name="edPosition" format="integer"/>
+
     </declare-styleable>
 
 </resources>

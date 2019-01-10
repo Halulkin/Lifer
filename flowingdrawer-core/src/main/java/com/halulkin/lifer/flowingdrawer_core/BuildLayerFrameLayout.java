@@ -101,4 +101,5 @@ public class BuildLayerFrameLayout extends FrameLayout {
                 .FILTER_BITMAP_FLAG);
         canvas.setDrawFilter(pfd);
     }
+
 }

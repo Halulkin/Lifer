@@ -3,10 +3,13 @@ package com.halulkin.lifer.flowingdrawer_core;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * Created by mxn on 2016/10/17.
@@ -64,6 +67,7 @@ public class FlowingDrawer extends ElasticDrawer {
     @SuppressLint("NewApi")
     @Override
     protected void onOffsetPixelsChanged(int offsetPixels) {
+        showShadow(offsetPixels);
         switch (getPosition()) {
             case Position.LEFT:
                 mMenuContainer.setTranslationX(offsetPixels - mMenuSize);
@@ -99,6 +103,10 @@ public class FlowingDrawer extends ElasticDrawer {
         }
     }
 
+    private ViewGroup mContentView;
+    private ImageView mBg;
+
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         final int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -128,6 +136,23 @@ public class FlowingDrawer extends ElasticDrawer {
         setMeasuredDimension(width, height);
 
         updateTouchAreaSize();
+
+        mContentView = (ViewGroup) mContentContainer;
+    }
+
+    protected void showShadow(float per) {
+        if (mBg == null) {
+            mBg = new ImageView(mContentView.getContext());
+            mBg.setBackgroundColor(Color.argb(150, 20, 20, 20));
+            ViewGroup.LayoutParams lp =
+                    new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            mContentView.addView(mBg, lp);
+        }
+        if(per<1000) {
+            per = per*0.001f;
+        }
+        com.nineoldandroids.view.ViewHelper.setAlpha(mBg, per);
+        mBg.setClickable(per > 0);
     }
 
     @Override
@@ -167,7 +192,7 @@ public class FlowingDrawer extends ElasticDrawer {
 
         switch (getPosition()) {
             case Position.LEFT:
-                closeEnough = mOffsetPixels <= mMenuSize/ 2;
+                closeEnough = mOffsetPixels <= mMenuSize / 2;
                 break;
             case Position.RIGHT:
                 closeEnough = -mOffsetPixels <= mMenuSize / 2;
@@ -470,7 +495,7 @@ public class FlowingDrawer extends ElasticDrawer {
                                 endDrag();
                             }
                         } else {
-                            if (mOffsetPixels + dx > - mMenuSize / 2) {
+                            if (mOffsetPixels + dx > -mMenuSize / 2) {
                                 onMoveEvent(dx, y, FlowingMenuLayout.TYPE_UP_MANUAL);
                             } else {
                                 mVelocityTracker.computeCurrentVelocity(1000, mMaxVelocity);
