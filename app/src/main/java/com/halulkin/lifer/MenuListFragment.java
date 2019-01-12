@@ -33,7 +33,6 @@ public class MenuListFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_menu, container,
                 false);
 
-
         vNavigation = (NavigationView) view.findViewById(R.id.vNavigation);
         vNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -51,7 +50,6 @@ public class MenuListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
 //        vNavigation.getMenu().getItem(0).setChecked(true);
 
@@ -90,5 +88,4 @@ public class MenuListFragment extends Fragment {
 //                .transform(new CircleTransformation())
                 .into(ivMenuUserProfilePhoto);
     }
-
 }

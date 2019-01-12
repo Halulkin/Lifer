@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -17,7 +18,7 @@
         android:background="@drawable/square_frame"
         android:gravity="center"
         android:padding="8dp"
-        android:text="14:30"
+        android:text="@string/_14_30"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,14 +30,31 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Learn English"
+        android:text="@string/learn_english"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkbox_1"
         app:layout_constraintStart_toEndOf="@+id/tvScheduleTime"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.lguipeng.library.animcheckbox.AnimCheckBox
+        android:id="@+id/checkbox_1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="4dp"
+        app:checked="true"
+        app:circle_color="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:stroke_color="#9C27B0"
+        app:stroke_width="3dp" />
 
 </android.support.constraint.ConstraintLayout>
 
