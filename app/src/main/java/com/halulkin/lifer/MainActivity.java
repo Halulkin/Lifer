@@ -47,23 +47,6 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         setupMenu();
     }
 
-    private ImageView mBg;
-    private ViewGroup mContentView;
-
-    protected void showShadow(float per) {
-        mContentView = mDrawer;
-        if (mBg == null) {
-            mBg = new ImageView(mContentView.getContext());
-//            mBg.setBackgroundColor(Color.argb(150, 20, 20, 20));
-            mBg.setBackgroundColor(getResources().getColor(R.color.red));
-            ViewGroup.LayoutParams lp =
-                    new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            mContentView.addView(mBg, lp);
-        }
-        com.nineoldandroids.view.ViewHelper.setAlpha(mBg, per);
-        mBg.setClickable(per > 0);
-    }
-
     public void expandToolbar() {
         appBarLayout.setExpanded(true, true);
     }
@@ -98,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
             @Override
             public void onDrawerSlide(float openRatio, int offsetPixels) {
                 Log.i("MainActivity", "openRatio=" + openRatio + " ,offsetPixels=" + offsetPixels);
-                showShadow(800);
             }
         });
     }

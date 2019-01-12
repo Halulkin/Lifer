@@ -35,7 +35,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         TargetsModel targetsModel = targetsModelList.get(position);
-        holder.tvTargetTime.setText(String.valueOf(position+1));
+        holder.tvTargetTime.setText(String.valueOf(position + 1));
         holder.tvTargetTitle.setText(targetsModel.getTitle());
     }
 
