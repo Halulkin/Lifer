@@ -106,10 +106,27 @@ public class FlowingMenuLayout extends FrameLayout {
         }
         canvas.save();
         canvas.drawPath(mClipPath, mPaint);
-        canvas.clipPath(mClipPath, Region.Op.REPLACE);
+        canvas.clipPath(mClipPath);
         super.dispatchDraw(canvas);
         canvas.restore();
     }
+//    @Override
+//    protected void dispatchDraw(Canvas canvas) {
+//
+//        width = getWidth();
+//        height = getHeight();
+//        mClipPath.reset();
+//        if (position == ElasticDrawer.Position.LEFT) {
+//            drawLeftMenu();
+//        } else {
+//            drawRightMenu();
+//        }
+//        canvas.save();
+//        canvas.drawPath(mClipPath, mPaint);
+//        canvas.clipPath(mClipPath, Region.Op.REPLACE);
+//        super.dispatchDraw(canvas);
+//        canvas.restore();
+//    }
 
     private void drawLeftMenu() {
         switch (currentType) {

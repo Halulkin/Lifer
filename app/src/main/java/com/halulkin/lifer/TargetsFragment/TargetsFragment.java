@@ -34,6 +34,7 @@ public class TargetsFragment extends Fragment {
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
         ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
 
+
         setupTargetsRecyclerView();
     }
 

@@ -33,7 +33,7 @@ public class TargetsModel {
         this.title = title;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
