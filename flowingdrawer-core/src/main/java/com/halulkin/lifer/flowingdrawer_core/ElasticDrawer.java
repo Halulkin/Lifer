@@ -1,4 +1,3 @@
-
 package com.halulkin.lifer.flowingdrawer_core;
 
 import com.nineoldandroids.animation.Animator;
@@ -757,11 +756,7 @@ public abstract class ElasticDrawer extends ViewGroup {
 
     @Override
     public void postOnAnimation(Runnable action) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            super.postOnAnimation(action);
-        } else {
-            postDelayed(action, ANIMATION_DELAY);
-        }
+        super.postOnAnimation(action);
     }
 
     protected void dispatchOnDrawerSlide(float openRatio, int offsetPixels) {
@@ -853,11 +848,8 @@ public abstract class ElasticDrawer extends ViewGroup {
     }
 
     protected float getXVelocity(VelocityTracker velocityTracker) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
-            return velocityTracker.getXVelocity(mActivePointerId);
-        }
+        return velocityTracker.getXVelocity(mActivePointerId);
 
-        return velocityTracker.getXVelocity();
     }
 
     protected boolean canChildrenScroll(int dx, int x, int y) {
@@ -915,19 +907,13 @@ public abstract class ElasticDrawer extends ViewGroup {
     }
 
     private int supportGetTranslationY(View v) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return (int) v.getTranslationY();
-        }
+        return (int) v.getTranslationY();
 
-        return 0;
     }
 
     private int supportGetTranslationX(View v) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return (int) v.getTranslationX();
-        }
+        return (int) v.getTranslationX();
 
-        return 0;
     }
 
     protected boolean isCloseEnough() {

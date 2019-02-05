@@ -13,11 +13,17 @@ import com.halulkin.lifer.MainActivity;
 import com.halulkin.lifer.R;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class TargetsFragment extends Fragment {
 
-    private RecyclerView rvTargets;
+    public RecyclerView rvTargets;
+    public TargetsAdapter targetsAdapter;
+    public LinearLayoutManager linearLayoutManager;
+
+    List<TargetsModel> targetsData = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -29,17 +35,22 @@ public class TargetsFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        rvTargets = (RecyclerView) view.findViewById(R.id.rvTargets);
-
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
         ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
 
 
-        setupTargetsRecyclerView();
+        rvTargets = view.findViewById(R.id.rvTargets);
+        targetsAdapter = new TargetsAdapter();
+        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        rvTargets.setLayoutManager(linearLayoutManager);
+        rvTargets.setAdapter(targetsAdapter);
+
+        fillItems();
+
+        targetsAdapter.loadItems(targetsData);
     }
 
-    private void setupTargetsRecyclerView() {
-        ArrayList<TargetsModel> targetsData = new ArrayList<>();
+    private void fillItems() {
         targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
         targetsData.add(new TargetsModel("Run 1000 km", false));
         targetsData.add(new TargetsModel("Learn full information about kotlin", false));
@@ -72,10 +83,5 @@ public class TargetsFragment extends Fragment {
         targetsData.add(new TargetsModel("Run 1000 km", false));
         targetsData.add(new TargetsModel("Learn full information about kotlin", false));
         targetsData.add(new TargetsModel("Earn 1000 dollars", false));
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        rvTargets.setLayoutManager(linearLayoutManager);
-        TargetsAdapter targetsAdapter = new TargetsAdapter(getContext(), targetsData);
-        rvTargets.setAdapter(targetsAdapter);
     }
 }

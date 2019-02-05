@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="5" by="lint 3.3">
+
+    <issue
+        id="InnerclassSeparator"
+        message="Use &apos;$&apos; instead of &apos;.&apos; for inner classes (or use only lowercase letters in package names); replace &quot;.CreatorsActivity.NewTargetTemplate&quot; with &quot;.CreatorsActivity$NewTargetTemplate&quot;">
+        <location
+            file="src\main\AndroidManifest.xml"
+            line="22"/>
+    </issue>
+
+    <issue
+        id="AllowBackup"
+        message="On SDK version 23 and up, your app data will be automatically backed up and restored on app install. Consider adding the attribute `android:fullBackupContent` to specify an `@xml` resource which configures which files to backup. More info: https://developer.android.com/training/backup/autosyncapi.html">
+        <location
+            file="src\main\AndroidManifest.xml"
+            line="8"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\BuildLayerFrameLayout.java"
+            line="29"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\BuildLayerFrameLayout.java"
+            line="36"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\BuildLayerFrameLayout.java"
+            line="43"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\BuildLayerFrameLayout.java"
+            line="68"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\BuildLayerFrameLayout.java"
+            line="82"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\BuildLayerFrameLayout.java"
+            line="86"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\ElasticDrawer.java"
+            line="760"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\ElasticDrawer.java"
+            line="856"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\ElasticDrawer.java"
+            line="918"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\ElasticDrawer.java"
+            line="926"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is never &lt; 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\FlowingMenuLayout.java"
+            line="69"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\FlowingMenuLayout.java"
+            line="70"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 22">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\ViewHelper.java"
+            line="34"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2085 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src\main\res\drawable\ic_fingerprint_blue.xml"
+            line="8"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2085 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector.">
+        <location
+            file="src\main\res\drawable\ic_fingerprint_white.xml"
+            line="8"/>
+    </issue>
+
+    <issue
+        id="MergeRootFrame"
+        message="This `&lt;FrameLayout>` can be replaced with a `&lt;merge>` tag">
+        <location
+            file="src\main\res\layout\content_main.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.bg` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\bg.9.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.btn_feed_action` appears to be unused">
+        <location
+            file="src\main\res\drawable\btn_feed_action.xml"
+            line="3"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.card_background` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\card_background.9.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.fab_color_shadow` appears to be unused">
+        <location
+            file="src\main\res\values\colors.xml"
+            line="7"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.text_like_counter` appears to be unused">
+        <location
+            file="src\main\res\values\colors.xml"
+            line="8"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.paint_color` appears to be unused">
+        <location
+            file="src\main\res\values\colors.xml"
+            line="9"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.red` appears to be unused">
+        <location
+            file="src\main\res\values\colors.xml"
+            line="11"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.nav_header_vertical_spacing` appears to be unused">
+        <location
+            file="src\main\res\values\dimens.xml"
+            line="4"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.nav_header_height` appears to be unused">
+        <location
+            file="src\main\res\values\dimens.xml"
+            line="5"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.fab_margin` appears to be unused">
+        <location
+            file="src\main\res\values\dimens.xml"
+            line="6"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.user_profile_avatar_size` appears to be unused">
+        <location
+            file="src\main\res\values\dimens.xml"
+            line="8"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.dimen.default_elevation` appears to be unused">
+        <location
+            file="src\main\res\values\dimens.xml"
+            line="10"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_add_new_white` appears to be unused">
+        <location
+            file="src\main\res\drawable\ic_add_new_white.xml"
+            line="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_comment_outline_grey` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_comment_outline_grey.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_feed_top` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_feed_top.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_fingerprint_white` appears to be unused">
+        <location
+            file="src\main\res\drawable\ic_fingerprint_white.xml"
+            line="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_global_menu_direct` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_global_menu_direct.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_global_menu_feed` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_global_menu_feed.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_global_menu_likes` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_global_menu_likes.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_global_menu_nearby` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_global_menu_nearby.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_global_menu_news` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_global_menu_news.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_global_menu_popular` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_global_menu_popular.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_heart_outline_grey` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_heart_outline_grey.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_heart_small_blue` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_heart_small_blue.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.mipmap.ic_launcher` appears to be unused">
+        <location
+            file="src\main\res\mipmap-hdpi\ic_launcher.png"/>
+        <location
+            file="src\main\res\mipmap-mdpi\ic_launcher.png"/>
+        <location
+            file="src\main\res\mipmap-xhdpi\ic_launcher.png"/>
+        <location
+            file="src\main\res\mipmap-xxhdpi\ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.mipmap.ic_launcher_lifer_round` appears to be unused">
+        <location
+            file="src\main\res\mipmap-anydpi-v26\ic_launcher_lifer_round.xml"
+            line="2"/>
+        <location
+            file="src\main\res\mipmap-hdpi\ic_launcher_lifer_round.png"/>
+        <location
+            file="src\main\res\mipmap-mdpi\ic_launcher_lifer_round.png"/>
+        <location
+            file="src\main\res\mipmap-xhdpi\ic_launcher_lifer_round.png"/>
+        <location
+            file="src\main\res\mipmap-xxhdpi\ic_launcher_lifer_round.png"/>
+        <location
+            file="src\main\res\mipmap-xxxhdpi\ic_launcher_lifer_round.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.ic_launcher_venom_background` appears to be unused">
+        <location
+            file="src\main\res\values\ic_launcher_venom_background.xml"
+            line="3"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_menu_white` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_menu_white.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_more_grey` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\ic_more_grey.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.img_feed_bottom_1` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\img_feed_bottom_1.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.img_feed_bottom_2` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\img_feed_bottom_2.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.img_feed_center_1` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\img_feed_center_1.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.img_feed_center_2` appears to be unused">
+        <location
+            file="src\main\res\drawable-xxhdpi\img_feed_center_2.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.anim.slide_in_likes_counter` appears to be unused">
+        <location
+            file="src\main\res\anim\slide_in_likes_counter.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.anim.slide_out_likes_counter` appears to be unused">
+        <location
+            file="src\main\res\anim\slide_out_likes_counter.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.hello_world` appears to be unused">
+        <location
+            file="src\main\res\values\strings.xml"
+            line="4"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.action_settings` appears to be unused">
+        <location
+            file="src\main\res\values\strings.xml"
+            line="5"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.DrawerItemsTextAppearance` appears to be unused">
+        <location
+            file="src\main\res\values\styles.xml"
+            line="28"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/gaster.png` in densityless folder">
+        <location
+            file="src\main\res\drawable\gaster.png"/>
+    </issue>
+
+    <issue
+        id="IconDensities"
+        message="Missing the following drawables in `drawable-hdpi`: bg.9.png, card_background.9.png, ic_comment_outline_grey.png, ic_description.xml, ic_feed_top.png... (17 more)">
+        <location
+            file="src\main\res\drawable-hdpi"/>
+    </issue>
+
+    <issue
+        id="IconDensities"
+        message="Missing the following drawables in `drawable-mdpi`: bg.9.png, card_background.9.png, ic_comment_outline_grey.png, ic_description.xml, ic_feed_top.png... (17 more)">
+        <location
+            file="src\main\res\drawable-mdpi"/>
+    </issue>
+
+    <issue
+        id="IconDensities"
+        message="Missing the following drawables in `drawable-xhdpi`: bg.9.png, card_background.9.png, ic_comment_outline_grey.png, ic_description.xml, ic_feed_top.png... (17 more)">
+        <location
+            file="src\main\res\drawable-xhdpi"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute">
+        <location
+            file="src\main\res\layout\activity_new_target_template.xml"
+            line="31"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute">
+        <location
+            file="src\main\res\layout\activity_new_target_template.xml"
+            line="69"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute">
+        <location
+            file="src\main\res\layout\activity_new_target_template.xml"
+            line="107"/>
+    </issue>
+
+    <issue
+        id="ClickableViewAccessibility"
+        message="Custom view `AnimCheckBox` overrides `onTouchEvent` but not `performClick`">
+        <location
+            file="src\main\java\com\github\lguipeng\library\animcheckbox\AnimCheckBox.java"
+            line="89"/>
+    </issue>
+
+    <issue
+        id="ClickableViewAccessibility"
+        message="Custom view `FlowingDrawer` overrides `onTouchEvent` but not `performClick`">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\FlowingDrawer.java"
+            line="448"/>
+    </issue>
+
+    <issue
+        id="ClickableViewAccessibility"
+        message="Custom view `NoClickThroughFrameLayout` overrides `onTouchEvent` but not `performClick`">
+        <location
+            file="src\main\java\com\halulkin\lifer\flowingdrawer_core\NoClickThroughFrameLayout.java"
+            line="27"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image">
+        <location
+            file="src\main\res\layout\activity_new_target_template.xml"
+            line="21"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image">
+        <location
+            file="src\main\res\layout\activity_new_target_template.xml"
+            line="59"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image">
+        <location
+            file="src\main\res\layout\activity_new_target_template.xml"
+            line="97"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image">
+        <location
+            file="src\main\res\layout\view_feed_toolbar.xml"
+            line="16"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image">
+        <location
+            file="src\main\res\layout\view_global_menu_header.xml"
+            line="38"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Enter target title&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\layout\activity_new_target_template.xml"
+            line="39"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Choose time of target&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\layout\activity_new_target_template.xml"
+            line="77"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Enter target description&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\layout\activity_new_target_template.xml"
+            line="116"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Targets&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\menu\drawer_menu.xml"
+            line="10"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Schedule&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\menu\drawer_menu.xml"
+            line="14"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Wallet&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\menu\drawer_menu.xml"
+            line="18"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Tools&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\menu\drawer_menu.xml"
+            line="22"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Communicate&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\menu\drawer_menu.xml"
+            line="25"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;About&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\menu\drawer_menu.xml"
+            line="30"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Add new&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\menu\menu_main.xml"
+            line="8"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;14:30&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\layout\targets_adapter_item.xml"
+            line="27"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Learn English&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\layout\targets_adapter_item.xml"
+            line="40"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Today&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\layout\targets_adapter_item.xml"
+            line="55"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Khairullo&quot;, should use `@string` resource">
+        <location
+            file="src\main\res\layout\view_global_menu_header.xml"
+            line="33"/>
+    </issue>
+
+</issues>

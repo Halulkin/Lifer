@@ -1,6 +1,6 @@
 <com.halulkin.lifer.flowingdrawer_core.FlowingDrawer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerlayout"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
@@ -15,7 +15,7 @@
         android:layout_height="match_parent" />
 
     <com.halulkin.lifer.flowingdrawer_core.FlowingMenuLayout
-        android:id="@+id/menulayout"
+        android:id="@+id/menuLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

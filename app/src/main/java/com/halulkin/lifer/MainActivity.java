@@ -1,7 +1,6 @@
 package com.halulkin.lifer;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -9,12 +8,9 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.halulkin.lifer.CreatorsActivity.NewTargetTemplate;
 import com.halulkin.lifer.flowingdrawer_core.ElasticDrawer;
@@ -35,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDrawer = findViewById(R.id.drawerlayout);
+        mDrawer = findViewById(R.id.drawerLayout);
         mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
 
         appBarLayout = findViewById(R.id.appBarLayout);
