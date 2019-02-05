@@ -7,7 +7,6 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
@@ -22,7 +21,8 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     private List<TargetsModel> targetsModelList = new ArrayList<>();
     private SparseBooleanArray itemStateArray = new SparseBooleanArray();
 
-    TargetsAdapter() { }
+    TargetsAdapter() {
+    }
 
     @NonNull
     @Override
@@ -55,7 +55,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements AnimCheckBox.OnClickListener {
         TextView tvTargetTime;
         TextView tvTargetTitle;
         TextView tvTargetDate;
@@ -66,12 +66,11 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
             tvTargetTime = itemView.findViewById(R.id.tvTargetTime);
             tvTargetTitle = itemView.findViewById(R.id.tvTargetTitle);
             tvTargetDate = itemView.findViewById(R.id.tvTargetDate);
-            checkBox = itemView.findViewById(R.id.checkBox);
-            itemView.setOnClickListener(this);
+            checkBox = itemView.findViewById(R.id.animCheckBoxTargets);
+            checkBox.setOnClickListener(this);
         }
 
         void bind(int position) {
-            // use the sparse boolean array to check
             if (!itemStateArray.get(position, false)) {
                 checkBox.setChecked(false, false);
             } else {

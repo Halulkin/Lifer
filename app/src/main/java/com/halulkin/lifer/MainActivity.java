@@ -117,14 +117,14 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
             //collapse map
             //TODO: change share icon color - set white share icon
             isShow = true;
-            menuItemIconDrawable.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
-            navigationIconDrawable.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+            menuItemIconDrawable.setColorFilter(getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+            navigationIconDrawable.setColorFilter(getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
         } else if (isShow) {
             //expanded map
             //TODO: change share icon color - set dark share icon
             isShow = false;
-            menuItemIconDrawable.setColorFilter(getResources().getColor(R.color.style_color_primary), PorterDuff.Mode.SRC_ATOP);
-            navigationIconDrawable.setColorFilter(getResources().getColor(R.color.style_color_primary), PorterDuff.Mode.SRC_ATOP);
+            menuItemIconDrawable.setColorFilter(getColor(R.color.style_color_primary), PorterDuff.Mode.SRC_ATOP);
+            navigationIconDrawable.setColorFilter(getColor(R.color.style_color_primary), PorterDuff.Mode.SRC_ATOP);
         }
     }
 

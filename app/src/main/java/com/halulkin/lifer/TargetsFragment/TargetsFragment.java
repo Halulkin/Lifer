@@ -1,6 +1,7 @@
 package com.halulkin.lifer.TargetsFragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,7 +28,7 @@ public class TargetsFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.targets_fragment, container, false);
     }
 
@@ -38,19 +39,18 @@ public class TargetsFragment extends Fragment {
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
         ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
 
-
         rvTargets = view.findViewById(R.id.rvTargets);
         targetsAdapter = new TargetsAdapter();
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvTargets.setLayoutManager(linearLayoutManager);
         rvTargets.setAdapter(targetsAdapter);
 
-        fillItems();
+        fillTargetItems();
 
         targetsAdapter.loadItems(targetsData);
     }
 
-    private void fillItems() {
+    private void fillTargetItems() {
         targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
         targetsData.add(new TargetsModel("Run 1000 km", false));
         targetsData.add(new TargetsModel("Learn full information about kotlin", false));

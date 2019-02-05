@@ -44,6 +44,7 @@ public class AnimCheckBox extends View implements Checkable {
     private int mInnerCircleAlpha = 0XFF;
     private int mStrokeWidth = 2;
     private int mStrokeColor = Color.BLUE;
+    private int mStrokeColor2 = Color.WHITE;
     private int mCircleColor = Color.WHITE;
     private OnCheckedChangeListener mOnCheckedChangeListener;
 
@@ -167,7 +168,7 @@ public class AnimCheckBox extends View implements Checkable {
         mPaint.setAlpha(0xFF);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokeWidth);
-        mPaint.setColor(mStrokeColor);
+        mPaint.setColor(mStrokeColor2);
     }
 
     private void initDrawStrokeCirclePaint() {
@@ -289,13 +290,19 @@ public class AnimCheckBox extends View implements Checkable {
         }
     }
 
-    /**
-     * @deprecated use {@link #setOnCheckedChangeListener(OnCheckedChangeListener)} instead
-     */
-    @Deprecated
+//    /**
+//     * @deprecated use {@link #setOnCheckedChangeListener(OnCheckedChangeListener)} instead
+//     */
+//    @Deprecated
+//    @Override
+//    public void setOnClickListener(OnClickListener l) {
+//        //Empty!
+//    }
+
+
     @Override
-    public void setOnClickListener(OnClickListener l) {
-        //Empty!
+    public void setOnClickListener(View.OnClickListener l) {
+        super.setOnClickListener(l);
     }
 
     private void setCheckedViewInner(boolean checked, boolean animation) {
