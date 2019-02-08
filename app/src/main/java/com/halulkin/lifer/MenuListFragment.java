@@ -29,14 +29,14 @@ public class MenuListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_menu, container,
                 false);
 
-        vNavigation = (NavigationView) view.findViewById(R.id.vNavigation);
+        vNavigation = view.findViewById(R.id.vNavigation);
         vNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 displaySelectedScreen(menuItem.getItemId());
                 return true;
             }
@@ -69,7 +69,7 @@ public class MenuListFragment extends Fragment {
                 break;
         }
 
-        if (fragment != null) {
+        if (fragment != null && getFragmentManager() != null) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.content_main_frame, fragment);
             ft.commit();

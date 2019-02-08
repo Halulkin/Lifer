@@ -37,7 +37,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TargetsModel targetsModel = targetsModelList.get(position);
-        holder.tvTargetTime.setText(String.valueOf(position + 1));
+//        holder.tvTargetTime.setText(String.valueOf(position + 1));
         holder.tvTargetTitle.setText(targetsModel.getTitle());
         holder.bind(position);
     }
@@ -63,9 +63,9 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
 
         ViewHolder(View itemView) {
             super(itemView);
-            tvTargetTime = itemView.findViewById(R.id.tvTargetTime);
+//            tvTargetTime = itemView.findViewById(R.id.tvTargetTime);
             tvTargetTitle = itemView.findViewById(R.id.tvTargetTitle);
-            tvTargetDate = itemView.findViewById(R.id.tvTargetDate);
+//            tvTargetDate = itemView.findViewById(R.id.tvTargetDate);
             checkBox = itemView.findViewById(R.id.animCheckBoxTargets);
             checkBox.setOnClickListener(this);
         }

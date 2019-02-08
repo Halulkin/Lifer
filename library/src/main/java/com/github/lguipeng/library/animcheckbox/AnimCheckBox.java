@@ -19,7 +19,7 @@ import android.widget.Checkable;
 import com.github.lguipeng.library.R;
 
 /**
- * Created by lgp on 2015/10/5.
+ * Modified by Halulkin on 05.02.2019
  */
 public class AnimCheckBox extends View implements Checkable {
     private final double mSin27 = Math.sin(Math.toRadians(27));
@@ -44,8 +44,8 @@ public class AnimCheckBox extends View implements Checkable {
     private int mInnerCircleAlpha = 0XFF;
     private int mStrokeWidth = 2;
     private int mStrokeColor = Color.BLUE;
-    private int mStrokeColor2 = Color.WHITE;
     private int mCircleColor = Color.WHITE;
+    private int mCircleColor2 = Color.parseColor("#9964DD17");
     private OnCheckedChangeListener mOnCheckedChangeListener;
 
     public AnimCheckBox(Context context) {
@@ -164,30 +164,34 @@ public class AnimCheckBox extends View implements Checkable {
         canvas.drawPath(mPath, mPaint);
     }
 
+    //Настройка галочки
     private void initDrawHookPaint() {
         mPaint.setAlpha(0xFF);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(mStrokeWidth);
-        mPaint.setColor(mStrokeColor2);
+        mPaint.setStrokeWidth(10);
+        mPaint.setColor(Color.WHITE);
     }
 
+    //Настройка круга
     private void initDrawStrokeCirclePaint() {
         mPaint.setAlpha(0xFF);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(mStrokeWidth);
-        mPaint.setColor(mStrokeColor);
+        mPaint.setStrokeWidth(5);
+        mPaint.setColor(Color.GRAY);
     }
 
+    //Настройка ободка после нажатия
     private void initDrawAlphaStrokeCirclePaint() {
-        mPaint.setStrokeWidth(mStrokeWidth);
+        mPaint.setStrokeWidth(0);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setColor(mStrokeColor);
-        mPaint.setAlpha(0x40);
+        mPaint.setColor(Color.WHITE);
+//        mPaint.setAlpha(0x40);
     }
 
+    //Настройка круга внутри после нажатия
     private void initDrawInnerCirclePaint() {
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setColor(mCircleColor);
+        mPaint.setColor(mCircleColor2);
         mPaint.setAlpha(mInnerCircleAlpha);
     }
 

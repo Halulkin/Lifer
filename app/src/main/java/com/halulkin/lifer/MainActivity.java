@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.halulkin.lifer.CreatorsActivity.NewTargetTemplate;
 import com.halulkin.lifer.flowingdrawer_core.ElasticDrawer;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     public FlowingDrawer mDrawer;
     private AppBarLayout appBarLayout;
     private Toolbar toolbar;
+    private ImageView collapsingToolbarImage;
     private Drawable menuItemIconDrawable, navigationIconDrawable;
 
     boolean isShow;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         appBarLayout.addOnOffsetChangedListener(this);
 
         toolbar = findViewById(R.id.toolbar);
+        collapsingToolbarImage = findViewById(R.id.expandedImage);
 
         setupToolbar();
         setupMenu();
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
     protected void setupToolbar() {
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_fingerprint_blue);
+        toolbar.setNavigationIcon(R.drawable.ic_menulist);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +84,17 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 //        });
     }
 
+    public void changeCollapsingToolbarImage(int imageNumber) {
+        if (imageNumber == 1) {
+            collapsingToolbarImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            collapsingToolbarImage.setImageResource(R.drawable.collapsing_background);
+
+        } else {
+            collapsingToolbarImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            collapsingToolbarImage.setImageResource(R.drawable.collapsing_background);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -90,9 +104,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         if (menuItemIconDrawable != null) {
             menuItemIconDrawable.mutate();
         }
-        if (navigationIconDrawable != null) {
-            navigationIconDrawable.mutate();
-        }
+
         return true;
     }
 
@@ -117,14 +129,14 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
             //collapse map
             //TODO: change share icon color - set white share icon
             isShow = true;
-            menuItemIconDrawable.setColorFilter(getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
-            navigationIconDrawable.setColorFilter(getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+//            menuItemIconDrawable.setColorFilter(getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+//            navigationIconDrawable.setColorFilter(getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
         } else if (isShow) {
             //expanded map
             //TODO: change share icon color - set dark share icon
             isShow = false;
-            menuItemIconDrawable.setColorFilter(getColor(R.color.style_color_primary), PorterDuff.Mode.SRC_ATOP);
-            navigationIconDrawable.setColorFilter(getColor(R.color.style_color_primary), PorterDuff.Mode.SRC_ATOP);
+//            menuItemIconDrawable.setColorFilter(getColor(R.color.style_color_primary), PorterDuff.Mode.SRC_ATOP);
+//            navigationIconDrawable.setColorFilter(getColor(R.color.style_color_primary), PorterDuff.Mode.SRC_ATOP);
         }
     }
 

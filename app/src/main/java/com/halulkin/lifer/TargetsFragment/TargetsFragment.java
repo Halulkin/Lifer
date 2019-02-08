@@ -33,11 +33,14 @@ public class TargetsFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
         ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
+
+        ((MainActivity)getActivity()).changeCollapsingToolbarImage(1);
+
 
         rvTargets = view.findViewById(R.id.rvTargets);
         targetsAdapter = new TargetsAdapter();
@@ -53,7 +56,7 @@ public class TargetsFragment extends Fragment {
     private void fillTargetItems() {
         targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
         targetsData.add(new TargetsModel("Run 1000 km", false));
-        targetsData.add(new TargetsModel("Learn full information about kotlin", false));
+        targetsData.add(new TargetsModel("Learn full information about kotlin, Learn full information about kotlin< Learn full information about kotlin", false));
         targetsData.add(new TargetsModel("Earn 1000 dollars", false));
         targetsData.add(new TargetsModel("Wake up at 6 o'clock", false));
         targetsData.add(new TargetsModel("Run 1000 km", false));

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_create_new"
-        android:icon="@drawable/ic_add_new_blue"
+        android:icon="@drawable/ic_add"
         android:orderInCategory="1"
-        android:title="Add new"
+        android:title="@string/add_new"
         app:showAsAction="ifRoom" />
 </menu>
