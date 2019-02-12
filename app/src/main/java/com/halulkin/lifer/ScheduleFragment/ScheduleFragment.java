@@ -52,9 +52,38 @@ public class ScheduleFragment extends Fragment {
     }
 
     private void fillScheduleItems() {
-        scheduleData.add(new ScheduleModel("06:00", "Wake up at 6 o'clock", false));
-        scheduleData.add(new ScheduleModel("07:00", "Run 10 km", false));
-        scheduleData.add(new ScheduleModel("09:00", "Learn full information about kotlin", false));
+        scheduleData.add(new ScheduleModel("10:00", "Wake up at 6 o'clock", false));
+        scheduleData.add(new ScheduleModel("10:30", "Run 10 km", false));
+        scheduleData.add(new ScheduleModel("10:31", "Learn full information about kotlin", false));
+        scheduleData.add(new ScheduleModel("09:40", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("20:00", "Learn full information about  kotlin kotlin kotlin kotlin kotlin kotlin kotlin kotlin kotlin", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
         scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
     }
 }

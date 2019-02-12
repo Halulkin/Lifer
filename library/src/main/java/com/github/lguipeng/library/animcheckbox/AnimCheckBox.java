@@ -45,7 +45,12 @@ public class AnimCheckBox extends View implements Checkable {
     private int mStrokeWidth = 2;
     private int mStrokeColor = Color.BLUE;
     private int mCircleColor = Color.WHITE;
-    private int mCircleColor2 = Color.parseColor("#9964DD17");
+//    private int mCircleColor2 = Color.parseColor("#9964DD17");
+//    private int mCircleColor2 = Color.parseColor("#6CB100");
+    private int mCircleColor2 = Color.parseColor("#83C817");
+
+
+
     private OnCheckedChangeListener mOnCheckedChangeListener;
 
     public AnimCheckBox(Context context) {
@@ -172,20 +177,20 @@ public class AnimCheckBox extends View implements Checkable {
         mPaint.setColor(Color.WHITE);
     }
 
-    //Настройка круга
+    //Настройка ободка перед нажатием
     private void initDrawStrokeCirclePaint() {
         mPaint.setAlpha(0xFF);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(5);
+        mPaint.setStrokeWidth(6);
         mPaint.setColor(Color.GRAY);
     }
 
     //Настройка ободка после нажатия
     private void initDrawAlphaStrokeCirclePaint() {
-        mPaint.setStrokeWidth(0);
+        mPaint.setStrokeWidth(10);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setColor(Color.WHITE);
-//        mPaint.setAlpha(0x40);
+        mPaint.setColor(mCircleColor2);
+        mPaint.setAlpha(0xFF);
     }
 
     //Настройка круга внутри после нажатия

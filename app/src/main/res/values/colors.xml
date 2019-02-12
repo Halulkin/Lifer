@@ -3,7 +3,13 @@
     <color name="style_color_primary">#efafaf</color>
     <color name="style_color_primary_dark">#bb7f80</color>
     <color name="style_color_light">#ffe1e1</color>
-    <color name="style_color_accent">#B5DEDA</color>
+    <color name="style_color_accent">#D1EEE9</color>
+    <color name="style_color_accent2">#C0E9E5</color>
+    <color name="style_color_accent3">#CCEBE6</color>
+
+
+
+
     <color name="fab_color_pressed">#007787</color>
     <color name="fab_color_shadow">#44000000</color>
     <color name="text_like_counter">#2b5a83</color>

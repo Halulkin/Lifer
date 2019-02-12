@@ -7,6 +7,7 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
@@ -37,8 +38,8 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TargetsModel targetsModel = targetsModelList.get(position);
-//        holder.tvTargetTime.setText(String.valueOf(position + 1));
         holder.tvTargetTitle.setText(targetsModel.getTitle());
+        holder.tvTargetDate.setText(targetsModel.getDate());
         holder.bind(position);
     }
 
@@ -55,26 +56,27 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements AnimCheckBox.OnClickListener {
-        TextView tvTargetTime;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvTargetTitle;
         TextView tvTargetDate;
-        AnimCheckBox checkBox;
+        AnimCheckBox animCheckBoxTargets;
+        RelativeLayout rlTargetsCheckbox;
 
         ViewHolder(View itemView) {
             super(itemView);
-//            tvTargetTime = itemView.findViewById(R.id.tvTargetTime);
             tvTargetTitle = itemView.findViewById(R.id.tvTargetTitle);
-//            tvTargetDate = itemView.findViewById(R.id.tvTargetDate);
-            checkBox = itemView.findViewById(R.id.animCheckBoxTargets);
-            checkBox.setOnClickListener(this);
+            tvTargetDate = itemView.findViewById(R.id.tvTargetDate);
+            animCheckBoxTargets = itemView.findViewById(R.id.animCheckBoxTargets);
+            rlTargetsCheckbox = itemView.findViewById(R.id.rlTargetsCheckbox);
+            rlTargetsCheckbox.setOnClickListener(this);
+            animCheckBoxTargets.setOnClickListener(this);
         }
 
         void bind(int position) {
             if (!itemStateArray.get(position, false)) {
-                checkBox.setChecked(false, false);
+                animCheckBoxTargets.setChecked(false, false);
             } else {
-                checkBox.setChecked(true, false);
+                animCheckBoxTargets.setChecked(true, false);
             }
         }
 
@@ -82,12 +84,13 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
             if (!itemStateArray.get(adapterPosition, false)) {
-                checkBox.setChecked(true);
+                animCheckBoxTargets.setChecked(true);
                 itemStateArray.put(adapterPosition, true);
             } else {
-                checkBox.setChecked(false);
+                animCheckBoxTargets.setChecked(false);
                 itemStateArray.put(adapterPosition, false);
             }
         }
     }
 }
+

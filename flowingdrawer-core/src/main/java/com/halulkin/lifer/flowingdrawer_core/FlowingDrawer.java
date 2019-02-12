@@ -142,7 +142,8 @@ public class FlowingDrawer extends ElasticDrawer {
 
     protected void showShadow(float per) {
         if (mBg == null) {
-            mBg = new ImageView(mContentView.getContext());
+//            mBg = new ImageView(mContentView.getContext());
+            mBg = new ImageView(getContext());
             mBg.setBackgroundColor(Color.argb(150, 20, 20, 20));
             ViewGroup.LayoutParams lp =
                     new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
