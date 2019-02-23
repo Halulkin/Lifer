@@ -12,6 +12,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
     <style name="ExpandedTitle" parent="@android:style/TextAppearance.Medium">
@@ -28,9 +29,15 @@
     </style>
 
     <style name="TextAppearance.My.TargetTitles" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">17sp</item>
     </style>
 
+    <style name="TextAppearance.My.ScheduleTitles" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">17sp</item>
+    </style>
 
+    <style name="TextAppearance.My.MenuTitles" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">18sp</item>
+    </style>
 
 </resources>

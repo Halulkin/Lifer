@@ -16,6 +16,8 @@ import com.halulkin.lifer.ScheduleFragment.ScheduleFragment;
 import com.halulkin.lifer.TargetsFragment.TargetsFragment;
 import com.squareup.picasso.Picasso;
 
+import static com.halulkin.lifer.MainActivity.fragmentId;
+
 public class MenuListFragment extends Fragment {
 
     private ImageView ivMenuUserProfilePhoto;
@@ -62,10 +64,12 @@ public class MenuListFragment extends Fragment {
         switch (itemId) {
             case R.id.nav_targets:
                 fragment = new TargetsFragment();
+                fragmentId = 1;
                 break;
 
             case R.id.nav_schedule:
                 fragment = new ScheduleFragment();
+                fragmentId = 2;
                 break;
         }
 

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.halulkin.lifer.CreatorsActivity.NewScheduleActivity;
 import com.halulkin.lifer.CreatorsActivity.NewTargetTemplate;
 import com.halulkin.lifer.flowingdrawer_core.ElasticDrawer;
 import com.halulkin.lifer.flowingdrawer_core.FlowingDrawer;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     private Toolbar toolbar;
     private ImageView collapsingToolbarImage;
     private Drawable menuItemIconDrawable, navigationIconDrawable;
+    public static int fragmentId = 1;
 
     boolean isShow;
     int scrollRange = -1;
@@ -112,8 +114,13 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create_new:
-                Intent intent = new Intent(MainActivity.this, NewTargetTemplate.class);
-                startActivity(intent);
+                if(fragmentId==1) {
+                    Intent intent = new Intent(MainActivity.this, NewTargetTemplate.class);
+                    startActivity(intent);
+                }else if(fragmentId==2) {
+                    Intent intent = new Intent(MainActivity.this, NewScheduleActivity.class);
+                    startActivity(intent);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -78,27 +78,26 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
         if (position < scheduleModelList.size() - 1) {
             if ((time >= parseStringToTime(scheduleModelList.get(position).getTime())) && (time < parseStringToTime(scheduleModelList.get(position + 1).getTime()))) {
                 holder.setActiveColor();
-                holder.tvScheduleTitle.setTypeface( holder.tvScheduleTitle.getTypeface(), Typeface.BOLD);
-                holder.tvScheduleTime.setTypeface( holder.tvScheduleTitle.getTypeface(), Typeface.BOLD);
+                holder.tvScheduleTitle.setTypeface(holder.tvScheduleTitle.getTypeface(), Typeface.BOLD);
+                holder.tvScheduleTime.setTypeface(holder.tvScheduleTitle.getTypeface(), Typeface.BOLD);
 
             } else {
                 holder.setInActiveColor();
-                holder.tvScheduleTitle.setTypeface( holder.tvScheduleTitle.getTypeface(), Typeface.NORMAL);
-                holder.tvScheduleTime.setTypeface( holder.tvScheduleTitle.getTypeface(), Typeface.NORMAL);
+                holder.tvScheduleTitle.setTypeface(holder.tvScheduleTitle.getTypeface(), Typeface.NORMAL);
+                holder.tvScheduleTime.setTypeface(holder.tvScheduleTitle.getTypeface(), Typeface.NORMAL);
             }
         } else {
             if ((time >= parseStringToTime(scheduleModelList.get(position).getTime()))) {
                 holder.setActiveColor();
-                holder.tvScheduleTitle.setTypeface( holder.tvScheduleTitle.getTypeface(), Typeface.BOLD);
-                holder.tvScheduleTime.setTypeface( holder.tvScheduleTitle.getTypeface(), Typeface.BOLD);
+                holder.tvScheduleTitle.setTypeface(holder.tvScheduleTitle.getTypeface(), Typeface.BOLD);
+                holder.tvScheduleTime.setTypeface(holder.tvScheduleTitle.getTypeface(), Typeface.BOLD);
 
             } else {
                 holder.setInActiveColor();
-                holder.tvScheduleTitle.setTypeface( holder.tvScheduleTitle.getTypeface(), Typeface.NORMAL);
-                holder.tvScheduleTime.setTypeface( holder.tvScheduleTitle.getTypeface(), Typeface.NORMAL);
+                holder.tvScheduleTitle.setTypeface(holder.tvScheduleTitle.getTypeface(), Typeface.NORMAL);
+                holder.tvScheduleTime.setTypeface(holder.tvScheduleTitle.getTypeface(), Typeface.NORMAL);
             }
         }
-
     }
 
     @Override

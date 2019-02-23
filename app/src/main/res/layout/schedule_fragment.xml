@@ -18,7 +18,7 @@
             android:layout_width="3dp"
             android:layout_height="match_parent"
             android:background="@color/style_color_accent"
-            android:layout_marginStart="40dp"/>
+            android:layout_marginStart="45dp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvSchedule"

@@ -7,4 +7,7 @@
     <string name="learn_english">Learn English</string>
     <string name="_14_30">14:30</string>
     <string name="add_new">Add new</string>
+    <string name="date_picker_dialog_message_1"> %1$d days left</string>
+    <string name="date_picker_dialog_message_2"> 1 day left</string>
+    <string name="date_picker_dialog_message_3">Today</string>
 </resources>

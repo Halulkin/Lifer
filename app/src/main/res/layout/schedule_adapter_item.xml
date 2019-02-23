@@ -34,7 +34,7 @@
         android:layout_marginBottom="16dp"
         android:gravity="start"
         android:text="@string/learn_english"
-        android:textAppearance="@style/TextAppearance.My.TargetTitles"
+        android:textAppearance="@style/TextAppearance.My.ScheduleTitles"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rlScheduleCheckbox"
         app:layout_constraintStart_toEndOf="@+id/cvScheduleTime"
