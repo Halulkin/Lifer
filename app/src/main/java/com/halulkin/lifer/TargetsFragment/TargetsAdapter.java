@@ -1,5 +1,6 @@
 package com.halulkin.lifer.TargetsFragment;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,10 +8,9 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
+import com.airbnb.lottie.LottieAnimationView;
 import com.halulkin.lifer.R;
 
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
 
     private List<TargetsModel> targetsModelList = new ArrayList<>();
     private SparseBooleanArray itemStateArray = new SparseBooleanArray();
+    private SparseBooleanArray starStateArray = new SparseBooleanArray();
 
     TargetsAdapter() {
     }
@@ -39,8 +40,8 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TargetsModel targetsModel = targetsModelList.get(position);
         holder.tvTargetTitle.setText(targetsModel.getTitle());
-        holder.tvTargetDate.setText(targetsModel.getDate());
-        holder.bind(position);
+        holder.bindCheckBox(position);
+        holder.bindStar(position);
     }
 
     @Override
@@ -58,37 +59,86 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvTargetTitle;
-        TextView tvTargetDate;
-        AnimCheckBox animCheckBoxTargets;
-        RelativeLayout rlTargetsCheckbox;
+        LottieAnimationView lvTargetCheckBox, lvTargetStar;
 
         ViewHolder(View itemView) {
             super(itemView);
             tvTargetTitle = itemView.findViewById(R.id.tvTargetTitle);
-            tvTargetDate = itemView.findViewById(R.id.tvTargetDate);
-            animCheckBoxTargets = itemView.findViewById(R.id.animCheckBoxTargets);
-            rlTargetsCheckbox = itemView.findViewById(R.id.rlTargetsCheckbox);
-            rlTargetsCheckbox.setOnClickListener(this);
-            animCheckBoxTargets.setOnClickListener(this);
+            lvTargetCheckBox = itemView.findViewById(R.id.lvTargetCheckBox);
+            lvTargetStar = itemView.findViewById(R.id.lvTargetStar);
+            lvTargetCheckBox.setOnClickListener(this);
+            lvTargetStar.setOnClickListener(this);
         }
 
-        void bind(int position) {
+        void bindCheckBox(int position) {
             if (!itemStateArray.get(position, false)) {
-                animCheckBoxTargets.setChecked(false, false);
+                lvTargetCheckBox.setProgress(0F);
             } else {
-                animCheckBoxTargets.setChecked(true, false);
+                lvTargetCheckBox.setProgress(1f);
+            }
+        }
+
+        void bindStar(int position) {
+            if (!starStateArray.get(position, false)) {
+                lvTargetStar.setProgress(0F);
+            } else {
+                lvTargetStar.setProgress(1f);
             }
         }
 
         @Override
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
-            if (!itemStateArray.get(adapterPosition, false)) {
-                animCheckBoxTargets.setChecked(true);
-                itemStateArray.put(adapterPosition, true);
+
+            if (v == lvTargetCheckBox) {
+                if (!itemStateArray.get(adapterPosition, false)) {
+                    itemStateArray.put(adapterPosition, true);
+                    startCheckBoxAnimation();
+                } else {
+                    itemStateArray.put(adapterPosition, false);
+                    startCheckBoxAnimation();
+                }
+
             } else {
-                animCheckBoxTargets.setChecked(false);
-                itemStateArray.put(adapterPosition, false);
+                if (!starStateArray.get(adapterPosition, false)) {
+                    starStateArray.put(adapterPosition, true);
+                    startStarAnimation();
+                } else {
+                    starStateArray.put(adapterPosition, false);
+                    startStarAnimation();
+                }
+            }
+        }
+
+        private void startCheckBoxAnimation() {
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(700);
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    lvTargetCheckBox.setProgress((Float) valueAnimator.getAnimatedValue());
+                }
+            });
+
+            if (lvTargetCheckBox.getProgress() == 0f) {
+                animator.start();
+            } else {
+                lvTargetCheckBox.setProgress(0f);
+            }
+        }
+
+        private void startStarAnimation() {
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(700);
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    lvTargetStar.setProgress((Float) valueAnimator.getAnimatedValue());
+                }
+            });
+
+            if (lvTargetStar.getProgress() == 0f) {
+                animator.start();
+            } else {
+                lvTargetStar.setProgress(0f);
             }
         }
     }

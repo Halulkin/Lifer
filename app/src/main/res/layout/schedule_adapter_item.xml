@@ -29,32 +29,30 @@
         android:id="@+id/tvScheduleTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:gravity="start"
         android:text="@string/learn_english"
         android:textAppearance="@style/TextAppearance.My.ScheduleTitles"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/rlScheduleCheckbox"
+        app:layout_constraintEnd_toStartOf="@+id/lvScheduleCheckBox"
         app:layout_constraintStart_toEndOf="@+id/cvScheduleTime"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/rlScheduleCheckbox"
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lvScheduleCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.github.lguipeng.library.animcheckbox.AnimCheckBox
-            android:id="@+id/animCheckBoxSchedule"
-            android:layout_width="26dp"
-            android:layout_height="26dp" />
-
-    </RelativeLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="fillingCheckBox.json"
+        app:lottie_loop="false"
+        app:lottie_scale="0.4" />
 
 </android.support.constraint.ConstraintLayout>
 

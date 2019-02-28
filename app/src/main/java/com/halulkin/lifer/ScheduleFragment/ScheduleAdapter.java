@@ -1,5 +1,6 @@
 package com.halulkin.lifer.ScheduleFragment;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -10,10 +11,9 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
+import com.airbnb.lottie.LottieAnimationView;
 import com.halulkin.lifer.R;
 
 import java.text.ParseException;
@@ -116,29 +116,66 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvScheduleTime;
         TextView tvScheduleTitle;
-        AnimCheckBox animCheckBoxSchedule;
-        RelativeLayout rlScheduleCheckbox;
         CardView cvScheduleTime;
+        LottieAnimationView lvScheduleCheckBox;
 
 
         ViewHolder(View itemView) {
             super(itemView);
             tvScheduleTime = itemView.findViewById(R.id.tvScheduleTime);
             tvScheduleTitle = itemView.findViewById(R.id.tvScheduleTitle);
-            animCheckBoxSchedule = itemView.findViewById(R.id.animCheckBoxSchedule);
             cvScheduleTime = itemView.findViewById(R.id.cvScheduleTime);
-            rlScheduleCheckbox = itemView.findViewById(R.id.rlScheduleCheckbox);
-            rlScheduleCheckbox.setOnClickListener(this);
-            animCheckBoxSchedule.setOnClickListener(this);
+            lvScheduleCheckBox = itemView.findViewById(R.id.lvScheduleCheckBox);
+            lvScheduleCheckBox.setOnClickListener(this);
+
         }
 
         void bind(int position) {
             if (!itemStateArray.get(position, false)) {
-                animCheckBoxSchedule.setChecked(false, false);
+                lvScheduleCheckBox.setProgress(0F);
             } else {
-                animCheckBoxSchedule.setChecked(true, false);
+                lvScheduleCheckBox.setProgress(1f);
             }
         }
+
+        @Override
+        public void onClick(View v) {
+            int adapterPosition = getAdapterPosition();
+            if (!itemStateArray.get(adapterPosition, false)) {
+                itemStateArray.put(adapterPosition, true);
+                startCheckAnimation();
+            } else {
+                itemStateArray.put(adapterPosition, false);
+                startCheckAnimation();
+            }
+        }
+
+        private void startCheckAnimation() {
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(700);
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    lvScheduleCheckBox.setProgress((Float) valueAnimator.getAnimatedValue());
+                }
+            });
+
+            if (lvScheduleCheckBox.getProgress() == 0f) {
+                animator.start();
+            } else {
+                lvScheduleCheckBox.setProgress(0f);
+            }
+        }
+
+//
+//
+//
+//        void bind(int position) {
+//            if (!itemStateArray.get(position, false)) {
+//                animCheckBoxSchedule.setChecked(false, false);
+//            } else {
+//                animCheckBoxSchedule.setChecked(true, false);
+//            }
+//        }
 
         public void setActiveColor() {
             cvScheduleTime.setCardBackgroundColor(Color.parseColor("#D1EEE9"));
@@ -147,18 +184,18 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
         void setInActiveColor() {
             cvScheduleTime.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
         }
-
-        @Override
-        public void onClick(View v) {
-            int adapterPosition = getAdapterPosition();
-            if (!itemStateArray.get(adapterPosition, false)) {
-                animCheckBoxSchedule.setChecked(true);
-                itemStateArray.put(adapterPosition, true);
-
-            } else {
-                animCheckBoxSchedule.setChecked(false);
-                itemStateArray.put(adapterPosition, false);
-            }
-        }
+//
+//        @Override
+//        public void onClick(View v) {
+//            int adapterPosition = getAdapterPosition();
+//            if (!itemStateArray.get(adapterPosition, false)) {
+//                animCheckBoxSchedule.setChecked(true);
+//                itemStateArray.put(adapterPosition, true);
+//
+//            } else {
+//                animCheckBoxSchedule.setChecked(false);
+//                itemStateArray.put(adapterPosition, false);
+//            }
+//        }
     }
 }

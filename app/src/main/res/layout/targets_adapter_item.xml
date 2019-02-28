@@ -13,58 +13,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:id="@+id/rlTargetsCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lvTargetCheckBox"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.github.lguipeng.library.animcheckbox.AnimCheckBox
-                android:id="@+id/animCheckBoxTargets"
-                android:layout_width="26dp"
-                android:layout_height="26dp" />
-
-        </RelativeLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="fillingCheckBox.json"
+            app:lottie_loop="false"
+            app:lottie_scale="1" />
 
         <TextView
             android:id="@+id/tvTargetTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Learn English EnglisLearn EnglisLearn Englis"
+            android:layout_marginEnd="8dp"
+            android:text="Learn English Englis"
             android:textAppearance="@style/TextAppearance.My.TargetTitles"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/cvTargetDate"
-            app:layout_constraintStart_toEndOf="@+id/rlTargetsCheckbox"
+            app:layout_constraintEnd_toStartOf="@+id/lvTargetStar"
+            app:layout_constraintStart_toEndOf="@+id/lvTargetCheckBox"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.design.card.MaterialCardView
-            android:id="@+id/cvTargetDate"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="1dp"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lvTargetStar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tvTargetDate"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="Today"
-                android:textAppearance="@style/TextAppearance.My.TargetTitles"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
-        </android.support.design.card.MaterialCardView>
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="star.json"
+            app:lottie_loop="false"
+            app:lottie_scale="1" />
 
     </android.support.constraint.ConstraintLayout>
 

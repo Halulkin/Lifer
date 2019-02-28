@@ -77,11 +77,11 @@ public class NewTargetTemplate extends AppCompatActivity {
 
         if (leftDays > 1) {
             etTargetDateReminder.setText(getString(R.string.date_picker_dialog_message_1, leftDays));
+
         } else if (leftDays == 1) {
             etTargetDateReminder.setText(getString(R.string.date_picker_dialog_message_2));
         } else {
             etTargetDateReminder.setText(getString(R.string.date_picker_dialog_message_3));
         }
     }
-
 }
