@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cvScheduleTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:text="@string/_14_30"
             android:textAppearance="@style/TextAppearance.My.TargetTitles" />
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tvScheduleTitle"
@@ -40,7 +40,6 @@
         app:layout_constraintStart_toEndOf="@+id/cvScheduleTime"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lvScheduleCheckBox"
         android:layout_width="wrap_content"
@@ -50,9 +49,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="false"
-        app:lottie_fileName="fillingCheckBox.json"
+        app:lottie_fileName="checkBox.json"
         app:lottie_loop="false"
         app:lottie_scale="0.4" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

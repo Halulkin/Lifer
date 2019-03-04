@@ -2,8 +2,8 @@ package com.halulkin.lifer.TargetsFragment;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -111,7 +111,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         }
 
         private void startCheckBoxAnimation() {
-            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(700);
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(400);
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator valueAnimator) {
@@ -127,7 +127,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         }
 
         private void startStarAnimation() {
-            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(700);
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(450);
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator valueAnimator) {

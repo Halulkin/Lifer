@@ -1,13 +1,9 @@
 package com.halulkin.lifer.flowingdrawer_core;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.ValueAnimator;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -21,6 +17,9 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Scroller;
+
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.ValueAnimator;
 
 /**
  * Created by mxn on 2016/10/15.
@@ -355,7 +354,6 @@ public abstract class ElasticDrawer extends ViewGroup {
          * @param delta Delta drag in pixels
          * @param x     X coordinate of the active touch point
          * @param y     Y coordinate of the active touch point
-         *
          * @return true if view is draggable by delta dx.
          */
         boolean isViewDraggable(View v, int delta, int x, int y);
@@ -879,7 +877,6 @@ public abstract class ElasticDrawer extends ViewGroup {
      * @param dx     Delta scrolled in pixels
      * @param x      X coordinate of the active touch point
      * @param y      Y coordinate of the active touch point
-     *
      * @return true if child views of v can be scrolled by delta of dx.
      */
     protected boolean canChildScrollHorizontally(View v, boolean checkV, int dx, int x, int y) {

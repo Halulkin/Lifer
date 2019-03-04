@@ -1,7 +1,7 @@
 package com.halulkin.lifer.CreatorsActivity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.halulkin.lifer.R;
 

@@ -1,13 +1,13 @@
 package com.halulkin.lifer;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     public FlowingDrawer mDrawer;
     private AppBarLayout appBarLayout;
     private Toolbar toolbar;
-    private ImageView collapsingToolbarImage;
+    private FloatingActionButton floatingActionButton;
+    private ImageView collapsingToolbarImage, collapsingToolbarImage2, collapsingToolbarImage3, collapsingToolbarImage4, collapsingToolbarImage5;
     private Drawable menuItemIconDrawable, navigationIconDrawable;
     public static int fragmentId = 1;
 
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        floatingActionButton = findViewById(R.id.floating_action_button);
+
         mDrawer = findViewById(R.id.drawerLayout);
         mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
 
@@ -43,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
         toolbar = findViewById(R.id.toolbar);
         collapsingToolbarImage = findViewById(R.id.expandedImage);
+        collapsingToolbarImage2 = findViewById(R.id.expandedImage2);
+        collapsingToolbarImage3 = findViewById(R.id.expandedImage3);
+        collapsingToolbarImage4 = findViewById(R.id.expandedImage4);
+        collapsingToolbarImage5 = findViewById(R.id.expandedImage5);
 
         setupToolbar();
         setupMenu();
@@ -89,11 +96,23 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     public void changeCollapsingToolbarImage(int imageNumber) {
         if (imageNumber == 1) {
             collapsingToolbarImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            collapsingToolbarImage.setImageResource(R.drawable.collapsing_background);
+            collapsingToolbarImage.setImageResource(R.drawable._1);
+
+            collapsingToolbarImage2.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            collapsingToolbarImage2.setImageResource(R.drawable._2);
+
+            collapsingToolbarImage3.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            collapsingToolbarImage3.setImageResource(R.drawable._3);
+
+            collapsingToolbarImage4.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            collapsingToolbarImage4.setImageResource(R.drawable._4);
+
+            collapsingToolbarImage5.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            collapsingToolbarImage5.setImageResource(R.drawable._5);
 
         } else {
             collapsingToolbarImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            collapsingToolbarImage.setImageResource(R.drawable.collapsing_background);
+            collapsingToolbarImage.setImageResource(R.drawable.panoramic);
         }
     }
 
@@ -114,10 +133,10 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create_new:
-                if(fragmentId==1) {
+                if (fragmentId == 1) {
                     Intent intent = new Intent(MainActivity.this, NewTargetTemplate.class);
                     startActivity(intent);
-                }else if(fragmentId==2) {
+                } else if (fragmentId == 2) {
                     Intent intent = new Intent(MainActivity.this, NewScheduleActivity.class);
                     startActivity(intent);
                 }
