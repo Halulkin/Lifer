@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="style_color_primary">#efafaf</color>
-    <color name="style_color_primary_dark">#bb7f80</color>
-    <color name="style_color_light">#ffe1e1</color>
-    <color name="style_color_accent">#D1EEE9</color>
+    <color name="style_color_primary">#8085a9</color>
+    <color name="style_color_primary_dark">#53587a</color>
+    <color name="style_color_light">#b0b5db</color>
+    <color name="style_color_accent">#555b7c</color>
     <color name="style_color_accent2">#C0E9E5</color>
     <color name="style_color_accent3">#CCEBE6</color>
-    
+    <color name="style_color_floating">#b0b7dd</color>
+
 
     <color name="fab_color_pressed">#007787</color>
     <color name="fab_color_shadow">#44000000</color>
@@ -17,6 +18,7 @@
     <color name="green">#64DD17</color>
     <color name="dark_green">#9964DD17</color>
     <color name="black">#000000</color>
+
 
     <!--<color name="style_color_primary">#2d5d82</color>-->
     <!--<color name="style_color_primary_dark">#21425d</color>-->

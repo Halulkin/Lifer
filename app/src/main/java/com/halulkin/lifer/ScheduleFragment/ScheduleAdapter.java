@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 
 class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
@@ -57,7 +58,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 
         try {
             Calendar cal = Calendar.getInstance();
-            cal.setTime(dateFormat.parse(time));
+            cal.setTime(Objects.requireNonNull(dateFormat.parse(time)));
             int hours = cal.get(Calendar.HOUR_OF_DAY);
             int minutes = cal.get(Calendar.MINUTE);
             parsedTime = (hours * 60) + minutes;
@@ -151,13 +152,8 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
         }
 
         private void startCheckAnimation() {
-            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(700);
-            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    lvScheduleCheckBox.setProgress((Float) valueAnimator.getAnimatedValue());
-                }
-            });
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(450);
+            animator.addUpdateListener(valueAnimator -> lvScheduleCheckBox.setProgress((Float) valueAnimator.getAnimatedValue()));
 
             if (lvScheduleCheckBox.getProgress() == 0f) {
                 animator.start();
@@ -178,7 +174,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 //        }
 
         public void setActiveColor() {
-            cvScheduleTime.setCardBackgroundColor(Color.parseColor("#D1EEE9"));
+            cvScheduleTime.setCardBackgroundColor(Color.parseColor("#b0b7dd"));
         }
 
         void setInActiveColor() {

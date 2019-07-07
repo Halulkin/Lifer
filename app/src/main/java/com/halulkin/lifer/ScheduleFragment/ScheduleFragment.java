@@ -39,11 +39,11 @@ public class ScheduleFragment extends Fragment {
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
         ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
 
-        ((MainActivity)getActivity()).changeCollapsingToolbarImage(2);
+        ((MainActivity)getActivity()).changeCollapsingToolbarImage(1);
 
         rvSchedule = view.findViewById(R.id.rvSchedule);
         scheduleAdapter = new ScheduleAdapter();
-        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         rvSchedule.setLayoutManager(linearLayoutManager);
         rvSchedule.setAdapter(scheduleAdapter);
 

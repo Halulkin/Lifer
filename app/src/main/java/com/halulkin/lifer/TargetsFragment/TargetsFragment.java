@@ -1,5 +1,6 @@
 package com.halulkin.lifer.TargetsFragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +33,7 @@ public class TargetsFragment extends Fragment {
         return inflater.inflate(R.layout.targets_fragment, container, false);
     }
 
+    @SuppressLint("WrongConstant")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -59,35 +61,5 @@ public class TargetsFragment extends Fragment {
         targetsData.add(new TargetsModel("Wake up at 6 o'clock", "05.02.2019",false));
         targetsData.add(new TargetsModel("Run 1000 km", "05.02.2019",false));
         targetsData.add(new TargetsModel("Learn full information about kotlin", "2 weeks",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "1 month",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "Tomorrow",false));
-        targetsData.add(new TargetsModel("Earn 1000 dollars", "Today",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Learn full information about kotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlinkotlin", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "Today",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "Tomorrow",false));
-        targetsData.add(new TargetsModel("Earn 1000 dollars", "Today",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Learn full information about kotlin", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "Today",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "Tomorrow",false));
-        targetsData.add(new TargetsModel("Earn 1000 dollars", "Today",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Learn full information about kotlin", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "Today",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "Tomorrow",false));
-        targetsData.add(new TargetsModel("Earn 1000 dollars", "Today",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Learn full information about kotlin", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "Today",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "Tomorrow",false));
-        targetsData.add(new TargetsModel("Earn 1000 dollars", "Today",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "05.02.2019",false));
-        targetsData.add(new TargetsModel("Learn full information about kotlin", "05.02.2019",false));
     }
 }
