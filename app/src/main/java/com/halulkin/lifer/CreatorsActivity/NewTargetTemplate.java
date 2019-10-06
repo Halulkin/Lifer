@@ -2,26 +2,36 @@ package com.halulkin.lifer.CreatorsActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.halulkin.lifer.R;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class NewTargetTemplate extends AppCompatActivity {
 
     TextView etTargetDate, etTargetDateReminder;
-    private int mYear, mMonth, mDay;
     String month, day;
     String targetDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_target_template);
+
+        Toolbar toolbar = findViewById(R.id.newTargetToolbar);
+        setSupportActionBar(toolbar);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
         etTargetDate = findViewById(R.id.etTargetDate);
         etTargetDateReminder = findViewById(R.id.etTargetDateReminder);
@@ -30,34 +40,29 @@ public class NewTargetTemplate extends AppCompatActivity {
     public void onClickEditTextTargetDate(View view) {
         // Get Current Date
         final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener() {
+                (view1, year, monthOfYear, dayOfMonth) -> {
 
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-
-                        if ((monthOfYear + 1) < 10) {
-                            month = "0" + (monthOfYear + 1);
-                        } else {
-                            month = String.valueOf(monthOfYear + 1);
-                        }
-                        if (dayOfMonth < 10) {
-                            day = "0" + dayOfMonth;
-                        } else {
-                            day = String.valueOf(dayOfMonth);
-                        }
-
-                        targetDate = day + " - " + (month) + " - " + year;
-                        etTargetDate.setText(targetDate);
-
-                        calculateDifference(dayOfMonth, monthOfYear, year);
-
+                    if ((monthOfYear + 1) < 10) {
+                        month = "0" + (monthOfYear + 1);
+                    } else {
+                        month = String.valueOf(monthOfYear + 1);
                     }
+                    if (dayOfMonth < 10) {
+                        day = "0" + dayOfMonth;
+                    } else {
+                        day = String.valueOf(dayOfMonth);
+                    }
+
+                    targetDate = day + " - " + (month) + " - " + year;
+                    etTargetDate.setText(targetDate);
+
+                    calculateDifference(dayOfMonth, monthOfYear, year);
+
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);

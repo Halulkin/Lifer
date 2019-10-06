@@ -3,7 +3,6 @@ package com.halulkin.lifer;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,12 +78,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     protected void setupToolbar() {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_menulist);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDrawer.toggleMenu();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> mDrawer.toggleMenu());
     }
 
     private void setupMenu() {

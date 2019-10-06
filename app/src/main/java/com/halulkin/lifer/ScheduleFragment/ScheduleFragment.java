@@ -20,11 +20,7 @@ import java.util.Objects;
 
 public class ScheduleFragment extends Fragment {
 
-    public RecyclerView rvSchedule;
-    public ScheduleAdapter scheduleAdapter;
-    public LinearLayoutManager linearLayoutManager;
-
-    List<ScheduleModel> scheduleData = new ArrayList<>();
+    private List<ScheduleModel> scheduleData = new ArrayList<>();
 
     @Nullable
     @Override
@@ -41,9 +37,9 @@ public class ScheduleFragment extends Fragment {
 
         ((MainActivity)getActivity()).changeCollapsingToolbarImage(1);
 
-        rvSchedule = view.findViewById(R.id.rvSchedule);
-        scheduleAdapter = new ScheduleAdapter();
-        linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        RecyclerView rvSchedule = view.findViewById(R.id.rvSchedule);
+        ScheduleAdapter scheduleAdapter = new ScheduleAdapter();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         rvSchedule.setLayoutManager(linearLayoutManager);
         rvSchedule.setAdapter(scheduleAdapter);
 
@@ -61,5 +57,9 @@ public class ScheduleFragment extends Fragment {
         scheduleData.add(new ScheduleModel("09:40", "Earn 100 dollars", false));
         scheduleData.add(new ScheduleModel("11:40", "Learn full information about kotlin", false));
         scheduleData.add(new ScheduleModel("18:30", "Earn 100 dollars", false));
+        scheduleData.add(new ScheduleModel("10:00", "Wake up at 6 o'clock", false));
+        scheduleData.add(new ScheduleModel("11:36", "Run 10 km", false));
+        scheduleData.add(new ScheduleModel("11:06", "Learn full information about kotlin", false));
+        scheduleData.add(new ScheduleModel("09:40", "Earn 100 dollars", false));
     }
 }

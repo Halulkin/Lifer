@@ -2,6 +2,13 @@ package com.halulkin.lifer.TargetsFragment;
 
 public class TargetsModel {
 
+    public static final String TABLE_NAME = "targets";
+
+    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_TARGET = "target";
+    public static final String COLUMN_CHECKBOXSTATE = "itemstate";
+    public static final String KEY_STARSTATE = "starstate";
+
     private String title;
     private String date;
     private boolean status;

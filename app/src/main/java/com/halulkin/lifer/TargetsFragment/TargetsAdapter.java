@@ -2,13 +2,17 @@ package com.halulkin.lifer.TargetsFragment;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.halulkin.lifer.R;
@@ -60,14 +64,19 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvTargetTitle;
         LottieAnimationView lvTargetCheckBox, lvTargetStar;
+        final MediaPlayer mp;
 
         ViewHolder(View itemView) {
             super(itemView);
             tvTargetTitle = itemView.findViewById(R.id.tvTargetTitle);
             lvTargetCheckBox = itemView.findViewById(R.id.lvTargetCheckBox);
             lvTargetStar = itemView.findViewById(R.id.lvTargetStar);
+
+
             lvTargetCheckBox.setOnClickListener(this);
             lvTargetStar.setOnClickListener(this);
+
+            mp = MediaPlayer.create(itemView.getContext(), R.raw.sample);
         }
 
         void bindCheckBox(int position) {
@@ -94,12 +103,18 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
                 if (!itemStateArray.get(adapterPosition, false)) {
                     itemStateArray.put(adapterPosition, true);
                     startCheckBoxAnimation();
+                    tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    tvTargetTitle.setTextColor(Color.GRAY);
+                    mp.start();
+
                 } else {
                     itemStateArray.put(adapterPosition, false);
                     startCheckBoxAnimation();
+                    tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                    tvTargetTitle.setTextColor(Color.BLACK);
                 }
 
-            } else {
+            } else if(v == lvTargetStar) {
                 if (!starStateArray.get(adapterPosition, false)) {
                     starStateArray.put(adapterPosition, true);
                     startStarAnimation();

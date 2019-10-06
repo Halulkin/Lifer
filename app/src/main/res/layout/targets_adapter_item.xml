@@ -13,6 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/tvTargetTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Learn English Englis"
+            android:textAppearance="@style/TextAppearance.My.TargetTitles"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/lvTargetStar"
+            app:layout_constraintStart_toEndOf="@+id/lvTargetCheckBox"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lvTargetCheckBox"
             android:layout_width="32dp"
@@ -25,21 +40,6 @@
             app:lottie_fileName="checkBox.json"
             app:lottie_loop="false"
             app:lottie_scale="1" />
-
-        <TextView
-            android:id="@+id/tvTargetTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="Learn English Englis"
-            android:textAppearance="@style/TextAppearance.My.TargetTitles"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/lvTargetStar"
-            app:layout_constraintStart_toEndOf="@+id/lvTargetCheckBox"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lvTargetStar"

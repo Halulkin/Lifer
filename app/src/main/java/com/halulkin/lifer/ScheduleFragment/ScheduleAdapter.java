@@ -3,15 +3,18 @@ package com.halulkin.lifer.ScheduleFragment;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
+import android.media.MediaPlayer;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.halulkin.lifer.R;
@@ -29,7 +32,6 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 
     private List<ScheduleModel> scheduleModelList = new ArrayList<>();
     private SparseBooleanArray itemStateArray = new SparseBooleanArray();
-    private int time;
     private int parsedTime;
 
     ScheduleAdapter() {
@@ -71,7 +73,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ScheduleModel scheduleModel = scheduleModelList.get(position);
-        time = getCurrentTime();
+        int time = getCurrentTime();
         holder.tvScheduleTime.setText(scheduleModel.getTime());
         holder.tvScheduleTitle.setText(scheduleModel.getTitle());
         holder.bind(position);
@@ -119,6 +121,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
         TextView tvScheduleTitle;
         CardView cvScheduleTime;
         LottieAnimationView lvScheduleCheckBox;
+        final MediaPlayer mp;
 
 
         ViewHolder(View itemView) {
@@ -128,7 +131,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
             cvScheduleTime = itemView.findViewById(R.id.cvScheduleTime);
             lvScheduleCheckBox = itemView.findViewById(R.id.lvScheduleCheckBox);
             lvScheduleCheckBox.setOnClickListener(this);
-
+            mp = MediaPlayer.create(itemView.getContext(), R.raw.sample);
         }
 
         void bind(int position) {
@@ -145,9 +148,18 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
             if (!itemStateArray.get(adapterPosition, false)) {
                 itemStateArray.put(adapterPosition, true);
                 startCheckAnimation();
+                tvScheduleTitle.setPaintFlags(tvScheduleTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                tvScheduleTitle.setTextColor(Color.GRAY);
+                tvScheduleTime.setPaintFlags(tvScheduleTime.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                tvScheduleTime.setTextColor(Color.GRAY);
+                mp.start();
             } else {
                 itemStateArray.put(adapterPosition, false);
                 startCheckAnimation();
+                tvScheduleTitle.setPaintFlags(tvScheduleTitle.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                tvScheduleTitle.setTextColor(Color.BLACK);
+                tvScheduleTime.setPaintFlags(tvScheduleTime.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                tvScheduleTime.setTextColor(Color.BLACK);
             }
         }
 
@@ -161,9 +173,6 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
                 lvScheduleCheckBox.setProgress(0f);
             }
         }
-
-//
-//
 //
 //        void bind(int position) {
 //            if (!itemStateArray.get(position, false)) {
@@ -173,7 +182,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 //            }
 //        }
 
-        public void setActiveColor() {
+        void setActiveColor() {
             cvScheduleTime.setCardBackgroundColor(Color.parseColor("#b0b7dd"));
         }
 
