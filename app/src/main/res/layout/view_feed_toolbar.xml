@@ -6,12 +6,13 @@
     android:layout_height="250dp"
     android:fitsSystemWindows="true"
     app:collapsedTitleTextAppearance="@style/CollapsedTitle"
+    app:expandedTitleMargin="16dp"
     app:contentScrim="@color/style_color_primary"
     app:expandedTitleTextAppearance="@style/ExpandedTitle"
     app:layout_scrollFlags="scroll|exitUntilCollapsed"
     app:scrimAnimationDuration="400"
     app:scrimVisibleHeightTrigger="100dp"
-    app:statusBarScrim="#20000000">
+    app:statusBarScrim="#00000000">
 
     <ImageView
         android:id="@+id/expandedImage5"
@@ -45,13 +46,13 @@
         app:layout_collapseMode="parallax"
         app:layout_collapseParallaxMultiplier="0.1" />
 
-    <ImageView
-        android:id="@+id/expandedImage4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        app:layout_collapseMode="parallax"
-        app:layout_collapseParallaxMultiplier="0.4" />
+<!--    <ImageView-->
+<!--        android:id="@+id/expandedImage4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        app:layout_collapseMode="parallax"-->
+<!--        app:layout_collapseParallaxMultiplier="0.4" />-->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

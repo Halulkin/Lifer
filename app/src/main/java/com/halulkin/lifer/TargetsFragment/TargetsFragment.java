@@ -51,7 +51,7 @@ public class TargetsFragment extends Fragment {
     }
 
     private void fillTargetItems() {
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "Today",false));
+        targetsData.add(new TargetsModel("Wake up at 6 o'clock up at 6 o'clock up at 6 o'clock up at 6 o'clock", "Today",false));
         targetsData.add(new TargetsModel("Run 1000 km", "Tomorrow",false));
         targetsData.add(new TargetsModel("Earn 1000 dollars", "Today",false));
         targetsData.add(new TargetsModel("Wake up at 6 o'clock", "05.02.2019",false));

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
         collapsingToolbarImage = findViewById(R.id.expandedImage);
         collapsingToolbarImage2 = findViewById(R.id.expandedImage2);
         collapsingToolbarImage3 = findViewById(R.id.expandedImage3);
-        collapsingToolbarImage4 = findViewById(R.id.expandedImage4);
+//        collapsingToolbarImage4 = findViewById(R.id.expandedImage4);
         collapsingToolbarImage5 = findViewById(R.id.expandedImage5);
 
         setupToolbar();
@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
             collapsingToolbarImage3.setScaleType(ImageView.ScaleType.CENTER_CROP);
             collapsingToolbarImage3.setImageResource(R.drawable._3);
 
-            collapsingToolbarImage4.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            collapsingToolbarImage4.setImageResource(R.drawable._4);
+//            collapsingToolbarImage4.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//            collapsingToolbarImage4.setImageResource(R.drawable._4);
 
             collapsingToolbarImage5.setScaleType(ImageView.ScaleType.CENTER_CROP);
             collapsingToolbarImage5.setImageResource(R.drawable._5);

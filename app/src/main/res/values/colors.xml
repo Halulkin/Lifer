@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+
+    <color name="color_primary">#5322A9</color>
+    <color name="color_primary_dark">#3F1798</color>
+    <color name="color_accent">#A26CFE</color>
+    <color name="color_light_background">#EDE8F6</color>
+
+
     <color name="style_color_primary">#8085a9</color>
     <color name="style_color_primary_dark">#53587a</color>
     <color name="style_color_light">#b0b5db</color>
