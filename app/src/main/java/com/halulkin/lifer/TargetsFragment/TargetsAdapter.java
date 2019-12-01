@@ -43,7 +43,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TargetsModel targetsModel = targetsModelList.get(position);
-        holder.tvTargetTitle.setText(targetsModel.getTitle());
+        holder.tvTargetTitle.setText(targetsModel.getTargetName());
         holder.bindCheckBox(position);
         holder.bindStar(position);
     }

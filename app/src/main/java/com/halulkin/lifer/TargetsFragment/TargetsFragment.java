@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.halulkin.lifer.DBHelper;
 import com.halulkin.lifer.MainActivity;
 import com.halulkin.lifer.R;
 
@@ -21,6 +22,7 @@ import java.util.Objects;
 
 public class TargetsFragment extends Fragment {
 
+    private DBHelper db;
     private List<TargetsModel> targetsData = new ArrayList<>();
 
     @Nullable
@@ -34,10 +36,13 @@ public class TargetsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        db = new DBHelper(getContext());
+
+
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
         ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
 
-        ((MainActivity)getActivity()).changeCollapsingToolbarImage(1);
+        ((MainActivity) getActivity()).changeCollapsingToolbarImage(1);
 
         RecyclerView rvTargets = view.findViewById(R.id.rvTargets);
         TargetsAdapter targetsAdapter = new TargetsAdapter();
@@ -47,13 +52,25 @@ public class TargetsFragment extends Fragment {
 
         fillTargetItems();
 
+        targetsData = db.getAllTargets();
         targetsAdapter.loadItems(targetsData);
     }
 
     private void fillTargetItems() {
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock up at 6 o'clock up at 6 o'clock up at 6 o'clock", "Today",false));
-        targetsData.add(new TargetsModel("Run 1000 km", "Tomorrow",false));
-        targetsData.add(new TargetsModel("Earn 1000 dollars", "Today",false));
-        targetsData.add(new TargetsModel("Wake up at 6 o'clock", "05.02.2019",false));
+        TargetsModel targetsModel1 = new TargetsModel(1, "Wake up at 6 o'clock up at 6 o'clock up at 6 o'clock up at 6 o'clock", "Today", false);
+        TargetsModel targetsModel2 = new TargetsModel(2, "Run 100 km", "Tomorrow", true);
+        TargetsModel targetsModel3 = new TargetsModel(3, "Earn 999$", "Yesterday", false);
+        TargetsModel targetsModel4 = new TargetsModel(4, "Become most strong man ", "Night", true);
+
+//        targetsData.add(targetsModel1);
+//        targetsData.add(targetsModel2);
+//        targetsData.add(targetsModel3);
+//        targetsData.add(targetsModel4);
+
+        db.addTarget(targetsModel1);
+        db.addTarget(targetsModel2);
+        db.addTarget(targetsModel3);
+        db.addTarget(targetsModel4);
+
     }
 }

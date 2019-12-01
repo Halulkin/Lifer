@@ -2,53 +2,50 @@ package com.halulkin.lifer.TargetsFragment;
 
 public class TargetsModel {
 
-    public static final String TABLE_NAME = "targets";
+    private int targetId;
+    private String targetName;
+    private String targetDate;
+    private boolean targetStatus;
 
-    public static final String COLUMN_ID = "id";
-    public static final String COLUMN_TARGET = "target";
-    public static final String COLUMN_CHECKBOXSTATE = "itemstate";
-    public static final String KEY_STARSTATE = "starstate";
-
-    private String title;
-    private String date;
-    private boolean status;
-
-    public TargetsModel(String title, boolean status) {
-        this.title = title;
-        this.status = status;
+    public TargetsModel() {
     }
 
-    public TargetsModel(String title, String date, boolean status) {
-        this.title = title;
-        this.date = date;
-        this.status = status;
+    public TargetsModel(int targetId, String targetName, String targetDate, boolean targetStatus) {
+        this.targetId = targetId;
+        this.targetName = targetName;
+        this.targetDate = targetDate;
+        this.targetStatus = targetStatus;
     }
 
-    public String getDate() {
-        return date;
+    public int getTargetId() {
+        return targetId;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setTargetId(int targetId) {
+        this.targetId = targetId;
     }
 
-    public boolean isStatus() {
-        return status;
+    public String getTargetName() {
+        return targetName;
     }
 
-    public String getTitle() {
-        return title;
+    public void setTargetName(String targetName) {
+        this.targetName = targetName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getTargetDate() {
+        return targetDate;
     }
 
-    public boolean getStatus() {
-        return status;
+    public void setTargetDate(String targetDate) {
+        this.targetDate = targetDate;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public boolean getTargetStatus() {
+        return targetStatus;
+    }
+
+    public void setTargetStatus(boolean targetStatus) {
+        this.targetStatus = targetStatus;
     }
 }

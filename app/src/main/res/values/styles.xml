@@ -40,13 +40,11 @@
     <style name="CollapsedTitle" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/app_bar_title_font</item>
     </style>
 
     <style name="ExpandedTitle" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/app_bar_title_font</item>
     </style>
 
     <style name="DrawerItemsTextAppearance" parent="@android:style/TextAppearance.Medium">
