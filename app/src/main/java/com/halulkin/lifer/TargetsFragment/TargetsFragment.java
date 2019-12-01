@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class TargetsFragment extends Fragment {
 
-    private DBHelper db;
+    public DBHelper db;
     private List<TargetsModel> targetsData = new ArrayList<>();
 
     @Nullable
@@ -54,13 +54,15 @@ public class TargetsFragment extends Fragment {
 
         targetsData = db.getAllTargets();
         targetsAdapter.loadItems(targetsData);
+
+        db.read();
     }
 
     private void fillTargetItems() {
-        TargetsModel targetsModel1 = new TargetsModel(1, "Wake up at 6 o'clock up at 6 o'clock up at 6 o'clock up at 6 o'clock", "Today", false);
-        TargetsModel targetsModel2 = new TargetsModel(2, "Run 100 km", "Tomorrow", true);
-        TargetsModel targetsModel3 = new TargetsModel(3, "Earn 999$", "Yesterday", false);
-        TargetsModel targetsModel4 = new TargetsModel(4, "Become most strong man ", "Night", true);
+        TargetsModel targetsModel1 = new TargetsModel(1, "Wake up at 6 o'clock up at 6 o'clock up at 6 o'clock up at 6 o'clock", "Today", 0);
+        TargetsModel targetsModel2 = new TargetsModel(2, "Run 100 km", "Tomorrow", 1);
+        TargetsModel targetsModel3 = new TargetsModel(3, "Earn 999$", "Yesterday", 0);
+        TargetsModel targetsModel4 = new TargetsModel(4, "Become most strong man ", "Night", 1);
 
 //        targetsData.add(targetsModel1);
 //        targetsData.add(targetsModel2);

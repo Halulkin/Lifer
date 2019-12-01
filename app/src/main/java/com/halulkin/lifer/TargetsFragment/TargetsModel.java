@@ -5,12 +5,12 @@ public class TargetsModel {
     private int targetId;
     private String targetName;
     private String targetDate;
-    private boolean targetStatus;
+    private int targetStatus;
 
     public TargetsModel() {
     }
 
-    public TargetsModel(int targetId, String targetName, String targetDate, boolean targetStatus) {
+    public TargetsModel(int targetId, String targetName, String targetDate, int targetStatus) {
         this.targetId = targetId;
         this.targetName = targetName;
         this.targetDate = targetDate;
@@ -41,11 +41,11 @@ public class TargetsModel {
         this.targetDate = targetDate;
     }
 
-    public boolean getTargetStatus() {
+    public int getTargetStatus() {
         return targetStatus;
     }
 
-    public void setTargetStatus(boolean targetStatus) {
+    public void setTargetStatus(int targetStatus) {
         this.targetStatus = targetStatus;
     }
 }

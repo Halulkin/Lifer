@@ -59,6 +59,14 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     void loadItems(List<TargetsModel> targetsModelList) {
         this.targetsModelList = targetsModelList;
         notifyDataSetChanged();
+        int j=0;
+        for(int i=0; i<targetsModelList.size(); i++) {
+            if(targetsModelList.get(i).getTargetStatus()==1) {
+                itemStateArray.put(i, true);
+            } else {
+                itemStateArray.put(i, false);
+            }
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

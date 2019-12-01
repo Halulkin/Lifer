@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.halulkin.lifer.TargetsFragment.TargetsModel;
 
@@ -35,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATION_TABLE = "CREATE TABLE Targets ( "
                 + "targetId INTEGER PRIMARY KEY AUTOINCREMENT, " + "targetName TEXT, "
-                + "targetDate TEXT, " + "KEY_TARGET_STATUS INTEGER )";
+                + "targetDate TEXT, " + "targetStatus INTEGER )";
 
         db.execSQL(CREATION_TABLE);
     }
@@ -72,11 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
         target.setTargetId(Integer.parseInt(cursor.getString(0)));
         target.setTargetName(cursor.getString(1));
         target.setTargetDate(cursor.getString(2));
-        if (Integer.parseInt(cursor.getString(3)) == 1) {
-            target.setTargetStatus(true);
-        } else {
-            target.setTargetStatus(false);
-        }
+        target.setTargetStatus(Integer.parseInt(cursor.getString(3)));
 
         return target;
     }
@@ -95,11 +92,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 target.setTargetId(Integer.parseInt(cursor.getString(0)));
                 target.setTargetName(cursor.getString(1));
                 target.setTargetDate(cursor.getString(2));
-                if (Integer.parseInt(cursor.getString(3)) == 1) {
-                    target.setTargetStatus(true);
-                } else {
-                    target.setTargetStatus(false);
-                }
+                target.setTargetStatus(Integer.parseInt(cursor.getString(3)));
+
                 targets.add(target);
             } while (cursor.moveToNext());
         }
@@ -116,6 +110,25 @@ public class DBHelper extends SQLiteOpenHelper {
         // insert
         db.insert(TABLE_NAME, null, values);
         db.close();
+    }
+
+    public void read(){
+        Cursor cursor = getWritableDatabase().query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            int idIndex = cursor.getColumnIndex(DBHelper.KEY_TARGET_ID);
+            int nameIndex = cursor.getColumnIndex(DBHelper.KEY_TARGET_NAME);
+            int dateIndex = cursor.getColumnIndex(DBHelper.KEY_TARGET_DATE);
+            int statusIndex = cursor.getColumnIndex(DBHelper.KEY_TARGET_STATUS);
+            do {
+                Log.d("mLog", "ID = " + cursor.getInt(idIndex) +
+                        ", name = " + cursor.getString(nameIndex) +
+                        ", email = " + cursor.getString(dateIndex));
+            } while (cursor.moveToNext());
+        } else
+            Log.d("mLog","0 rows");
+
+        cursor.close();
     }
 
     public int updateTarget(TargetsModel target) {
