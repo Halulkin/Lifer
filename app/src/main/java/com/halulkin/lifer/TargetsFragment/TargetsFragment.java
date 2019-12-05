@@ -50,19 +50,19 @@ public class TargetsFragment extends Fragment {
         rvTargets.setLayoutManager(linearLayoutManager);
         rvTargets.setAdapter(targetsAdapter);
 
-        fillTargetItems();
+//        fillTargetItems();
 
         targetsData = db.getAllTargets();
         targetsAdapter.loadItems(targetsData);
-
+        
         db.read();
     }
 
     private void fillTargetItems() {
-        TargetsModel targetsModel1 = new TargetsModel(1, "Wake up at 6 o'clock up at 6 o'clock up at 6 o'clock up at 6 o'clock", "Today", 0);
-        TargetsModel targetsModel2 = new TargetsModel(2, "Run 100 km", "Tomorrow", 1);
-        TargetsModel targetsModel3 = new TargetsModel(3, "Earn 999$", "Yesterday", 0);
-        TargetsModel targetsModel4 = new TargetsModel(4, "Become most strong man ", "Night", 1);
+        TargetsModel targetsModel1 = new TargetsModel("Wake up at 6 o'clock up at 6 o'clock up at 6 o'clock up at 6 o'clock", "Today", 0);
+        TargetsModel targetsModel2 = new TargetsModel("Run 100 km", "Tomorrow", 1);
+        TargetsModel targetsModel3 = new TargetsModel("Earn 999$", "Yesterday", 0);
+        TargetsModel targetsModel4 = new TargetsModel("Become most strong man ", "Night", 1);
 
 //        targetsData.add(targetsModel1);
 //        targetsData.add(targetsModel2);

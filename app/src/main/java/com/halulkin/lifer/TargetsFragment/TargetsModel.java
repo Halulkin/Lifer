@@ -10,6 +10,12 @@ public class TargetsModel {
     public TargetsModel() {
     }
 
+    public TargetsModel(String targetName, String targetDate, int targetStatus) {
+        this.targetName = targetName;
+        this.targetDate = targetDate;
+        this.targetStatus = targetStatus;
+    }
+
     public TargetsModel(int targetId, String targetName, String targetDate, int targetStatus) {
         this.targetId = targetId;
         this.targetName = targetName;

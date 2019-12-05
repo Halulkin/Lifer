@@ -72,6 +72,7 @@ public class MenuListFragment extends Fragment {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.content_main_frame, fragment);
             ft.commit();
+
         }
     }
 

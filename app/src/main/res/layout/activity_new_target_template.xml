@@ -89,7 +89,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/etTargetDate"
+                    android:id="@+id/tvTargetDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -99,7 +99,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/etTargetDateReminder"
+                    android:id="@+id/tvTargetDateReminder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
@@ -111,77 +111,13 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewTargetOption"
-            android:layout_width="0dp"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fb_save_target"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wwt2">
-
-            <EditText
-                android:id="@+id/etTargetOption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:background="@color/white"
-                android:hint="Target date"
-                android:padding="8dp"
-                android:textSize="14sp" />
-
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RadioButton" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewTargetDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewTargetOption">
-
-            <EditText
-                android:id="@+id/etTargetDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="top|left"
-                android:hint="Target description..."
-                android:inputType="textMultiLine"
-                android:lines="10"
-                android:maxLines="30"
-                android:minLines="7"
-                android:padding="8dp" />
-
-        </androidx.cardview.widget.CardView>
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:max="10"
-            android:progress="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewTargetDescription" />
+            android:layout_margin="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

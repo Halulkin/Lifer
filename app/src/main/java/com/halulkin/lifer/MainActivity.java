@@ -3,6 +3,8 @@ package com.halulkin.lifer;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
     private AppBarLayout appBarLayout;
     private Toolbar toolbar;
 
-    @BindView(R.id.floating_action_button)
+    @BindView(R.id.fb_add_new_targetFragment)
     FloatingActionButton floating_action_button;
 
     private ImageView collapsingToolbarImage, collapsingToolbarImage2, collapsingToolbarImage3, collapsingToolbarImage4, collapsingToolbarImage5;
@@ -57,10 +59,9 @@ public class MainActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
         setupToolbar();
         setupMenu();
-
     }
 
-    @OnClick(R.id.floating_action_button)
+    @OnClick(R.id.fb_add_new_targetFragment)
     public void setFloating_action_button() {
         if (fragmentId == 1) {
             Intent intent = new Intent(MainActivity.this, NewTargetTemplate.class);

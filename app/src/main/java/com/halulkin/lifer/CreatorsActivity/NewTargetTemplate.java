@@ -3,27 +3,47 @@ package com.halulkin.lifer.CreatorsActivity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.halulkin.lifer.DBHelper;
 import com.halulkin.lifer.R;
+import com.halulkin.lifer.TargetsFragment.TargetsModel;
 
 import java.util.Calendar;
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class NewTargetTemplate extends AppCompatActivity {
 
-    TextView etTargetDate, etTargetDateReminder;
+    public DBHelper db;
     String month, day;
     String targetDate;
+
+    @BindView(R.id.fb_save_target)
+    FloatingActionButton fbSaveTarget;
+
+    @BindView(R.id.etTargetTitle)
+    EditText etTargetTitle;
+    @BindView(R.id.tvTargetDate)
+    TextView tvTargetDate;
+    @BindView(R.id.tvTargetDateReminder)
+    TextView tvTargetDateReminder;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_target_template);
+
+        ButterKnife.bind(this);
 
         Toolbar toolbar = findViewById(R.id.newTargetToolbar);
         setSupportActionBar(toolbar);
@@ -33,8 +53,17 @@ public class NewTargetTemplate extends AppCompatActivity {
 
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
-        etTargetDate = findViewById(R.id.etTargetDate);
-        etTargetDateReminder = findViewById(R.id.etTargetDateReminder);
+        db = new DBHelper(this);
+
+    }
+
+    @OnClick(R.id.fb_save_target)
+    public void setFbSaveTarget() {
+        TargetsModel newTargetsModel = new TargetsModel();
+        newTargetsModel.setTargetDate(tvTargetDate.toString());
+        newTargetsModel.setTargetName(etTargetTitle.getText().toString());
+
+        db.addTarget(newTargetsModel);
     }
 
     public void onClickEditTextTargetDate(View view) {
@@ -59,7 +88,7 @@ public class NewTargetTemplate extends AppCompatActivity {
                     }
 
                     targetDate = day + " - " + (month) + " - " + year;
-                    etTargetDate.setText(targetDate);
+                    tvTargetDate.setText(targetDate);
 
                     calculateDifference(dayOfMonth, monthOfYear, year);
 
@@ -81,12 +110,14 @@ public class NewTargetTemplate extends AppCompatActivity {
         int leftDays = (int) days;
 
         if (leftDays > 1) {
-            etTargetDateReminder.setText(getString(R.string.date_picker_dialog_message_1, leftDays));
+            tvTargetDateReminder.setText(getString(R.string.date_picker_dialog_message_1, leftDays));
 
         } else if (leftDays == 1) {
-            etTargetDateReminder.setText(getString(R.string.date_picker_dialog_message_2));
+            tvTargetDateReminder.setText(getString(R.string.date_picker_dialog_message_2));
         } else {
-            etTargetDateReminder.setText(getString(R.string.date_picker_dialog_message_3));
+            tvTargetDateReminder.setText(getString(R.string.date_picker_dialog_message_3));
         }
     }
+
+
 }
