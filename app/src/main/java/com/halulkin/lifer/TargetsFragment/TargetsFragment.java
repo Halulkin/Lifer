@@ -54,7 +54,7 @@ public class TargetsFragment extends Fragment {
 
         targetsData = db.getAllTargets();
         targetsAdapter.loadItems(targetsData);
-        
+
         db.read();
     }
 

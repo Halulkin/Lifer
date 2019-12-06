@@ -44,6 +44,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TargetsModel targetsModel = targetsModelList.get(position);
         holder.tvTargetTitle.setText(targetsModel.getTargetName());
+        holder.tvTargetDate.setText(targetsModel.getTargetDate());
         holder.bindCheckBox(position);
         holder.bindStar(position);
     }
@@ -70,7 +71,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tvTargetTitle;
+        TextView tvTargetTitle, tvTargetDate;
         LottieAnimationView lvTargetCheckBox, lvTargetStar;
         final MediaPlayer mp;
 
@@ -79,6 +80,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
             tvTargetTitle = itemView.findViewById(R.id.tvTargetTitle);
             lvTargetCheckBox = itemView.findViewById(R.id.lvTargetCheckBox);
             lvTargetStar = itemView.findViewById(R.id.lvTargetStar);
+            tvTargetDate = itemView.findViewById(R.id.tvTargetDate);
 
 
             lvTargetCheckBox.setOnClickListener(this);
@@ -135,12 +137,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
 
         private void startCheckBoxAnimation() {
             ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(400);
-            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    lvTargetCheckBox.setProgress((Float) valueAnimator.getAnimatedValue());
-                }
-            });
+            animator.addUpdateListener(valueAnimator -> lvTargetCheckBox.setProgress((Float) valueAnimator.getAnimatedValue()));
 
             if (lvTargetCheckBox.getProgress() == 0f) {
                 animator.start();
@@ -151,12 +148,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
 
         private void startStarAnimation() {
             ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(450);
-            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    lvTargetStar.setProgress((Float) valueAnimator.getAnimatedValue());
-                }
-            });
+            animator.addUpdateListener(valueAnimator -> lvTargetStar.setProgress((Float) valueAnimator.getAnimatedValue()));
 
             if (lvTargetStar.getProgress() == 0f) {
                 animator.start();

@@ -14,7 +14,10 @@ import com.halulkin.lifer.DBHelper;
 import com.halulkin.lifer.R;
 import com.halulkin.lifer.TargetsFragment.TargetsModel;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -32,8 +35,8 @@ public class NewTargetTemplate extends AppCompatActivity {
 
     @BindView(R.id.etTargetTitle)
     EditText etTargetTitle;
-    @BindView(R.id.tvTargetDate)
-    TextView tvTargetDate;
+    @BindView(R.id.tvChooseTargetDate)
+    TextView tvChooseTargetDate;
     @BindView(R.id.tvTargetDateReminder)
     TextView tvTargetDateReminder;
 
@@ -60,7 +63,7 @@ public class NewTargetTemplate extends AppCompatActivity {
     @OnClick(R.id.fb_save_target)
     public void setFbSaveTarget() {
         TargetsModel newTargetsModel = new TargetsModel();
-        newTargetsModel.setTargetDate(tvTargetDate.toString());
+        newTargetsModel.setTargetDate(tvChooseTargetDate.getText().toString());
         newTargetsModel.setTargetName(etTargetTitle.getText().toString());
 
         db.addTarget(newTargetsModel);
@@ -87,8 +90,14 @@ public class NewTargetTemplate extends AppCompatActivity {
                         day = String.valueOf(dayOfMonth);
                     }
 
-                    targetDate = day + " - " + (month) + " - " + year;
-                    tvTargetDate.setText(targetDate);
+                    targetDate = day + "/" + (month) + "/" + year;
+//                    tvChooseTargetDate.setText(targetDate);
+
+                    try {
+                        formatDate(targetDate);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
 
                     calculateDifference(dayOfMonth, monthOfYear, year);
 
@@ -97,6 +106,28 @@ public class NewTargetTemplate extends AppCompatActivity {
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
     }
 
+    public void formatDate(String targetDate) throws ParseException {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = dateFormat.parse(targetDate);
+
+        dateFormat = new SimpleDateFormat("EEE, d MMM yyyy");
+        String dateTime = dateFormat.format(date);
+        tvChooseTargetDate.setText(dateTime);
+    }
+
+//    public void formatDate(String targetDate) throws ParseException {
+//
+//        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+//        Date date = format.parse(targetDate);
+//
+//
+//
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy");
+//        date = new Date();
+//        String dateTime = dateFormat.format(date);
+//        tvChooseTargetDate.setText(dateTime);
+//    }
 
     public void calculateDifference(int endDay, int endMonth, int endYear) {
         Calendar thatDay = Calendar.getInstance();
