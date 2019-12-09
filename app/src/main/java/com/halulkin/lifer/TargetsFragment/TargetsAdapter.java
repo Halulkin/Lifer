@@ -60,7 +60,6 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     void loadItems(List<TargetsModel> targetsModelList) {
         this.targetsModelList = targetsModelList;
         notifyDataSetChanged();
-        int j=0;
         for(int i=0; i<targetsModelList.size(); i++) {
             if(targetsModelList.get(i).getTargetStatus()==1) {
                 itemStateArray.put(i, true);
@@ -81,7 +80,6 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
             lvTargetCheckBox = itemView.findViewById(R.id.lvTargetCheckBox);
             lvTargetStar = itemView.findViewById(R.id.lvTargetStar);
             tvTargetDate = itemView.findViewById(R.id.tvTargetDate);
-
 
             lvTargetCheckBox.setOnClickListener(this);
             lvTargetStar.setOnClickListener(this);
@@ -111,16 +109,16 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
 
             if (v == lvTargetCheckBox) {
                 if (!itemStateArray.get(adapterPosition, false)) {
-                    itemStateArray.put(adapterPosition, true);
                     startCheckBoxAnimation();
+                    itemStateArray.put(adapterPosition, true);
                     tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     tvTargetTitle.setTextColor(Color.GRAY);
+                    mp.
                     mp.start();
-
                 } else {
-                    itemStateArray.put(adapterPosition, false);
                     startCheckBoxAnimation();
-                    tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                    itemStateArray.put(adapterPosition, false);
+                    tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
                     tvTargetTitle.setTextColor(Color.BLACK);
                 }
 
@@ -136,24 +134,20 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         }
 
         private void startCheckBoxAnimation() {
-            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(400);
-            animator.addUpdateListener(valueAnimator -> lvTargetCheckBox.setProgress((Float) valueAnimator.getAnimatedValue()));
-
-            if (lvTargetCheckBox.getProgress() == 0f) {
-                animator.start();
+            if (lvTargetCheckBox.getProgress() == 0) {
+                lvTargetCheckBox.playAnimation();
             } else {
-                lvTargetCheckBox.setProgress(0f);
+                lvTargetCheckBox.setProgress(0);
+                lvTargetCheckBox.pauseAnimation();
             }
         }
 
         private void startStarAnimation() {
-            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(450);
-            animator.addUpdateListener(valueAnimator -> lvTargetStar.setProgress((Float) valueAnimator.getAnimatedValue()));
-
-            if (lvTargetStar.getProgress() == 0f) {
-                animator.start();
+            if (lvTargetStar.getProgress() == 0) {
+                lvTargetStar.playAnimation();
             } else {
-                lvTargetStar.setProgress(0f);
+                lvTargetStar.setProgress(0);
+                lvTargetStar.pauseAnimation();
             }
         }
     }

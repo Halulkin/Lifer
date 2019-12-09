@@ -107,7 +107,6 @@ public class NewTargetTemplate extends AppCompatActivity {
     }
 
     public void formatDate(String targetDate) throws ParseException {
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = dateFormat.parse(targetDate);
 
@@ -115,19 +114,6 @@ public class NewTargetTemplate extends AppCompatActivity {
         String dateTime = dateFormat.format(date);
         tvChooseTargetDate.setText(dateTime);
     }
-
-//    public void formatDate(String targetDate) throws ParseException {
-//
-//        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-//        Date date = format.parse(targetDate);
-//
-//
-//
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy");
-//        date = new Date();
-//        String dateTime = dateFormat.format(date);
-//        tvChooseTargetDate.setText(dateTime);
-//    }
 
     public void calculateDifference(int endDay, int endMonth, int endYear) {
         Calendar thatDay = Calendar.getInstance();

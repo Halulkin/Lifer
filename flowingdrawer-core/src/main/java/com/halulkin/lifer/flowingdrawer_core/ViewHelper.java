@@ -31,10 +31,10 @@ final class ViewHelper {
 
     @SuppressLint("NewApi")
     static int getLayoutDirection(View v) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             return v.getLayoutDirection();
-        }
+//        }
 
-        return View.LAYOUT_DIRECTION_LTR;
+//        return View.LAYOUT_DIRECTION_LTR;
     }
 }
