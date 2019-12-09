@@ -1,10 +1,11 @@
 package com.halulkin.lifer.TargetsFragment;
 
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.media.MediaPlayer;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,8 +61,8 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     void loadItems(List<TargetsModel> targetsModelList) {
         this.targetsModelList = targetsModelList;
         notifyDataSetChanged();
-        for(int i=0; i<targetsModelList.size(); i++) {
-            if(targetsModelList.get(i).getTargetStatus()==1) {
+        for (int i = 0; i < targetsModelList.size(); i++) {
+            if (targetsModelList.get(i).getTargetStatus() == 1) {
                 itemStateArray.put(i, true);
             } else {
                 itemStateArray.put(i, false);
@@ -72,7 +73,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvTargetTitle, tvTargetDate;
         LottieAnimationView lvTargetCheckBox, lvTargetStar;
-        final MediaPlayer mp;
+        SoundPool sp;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -80,11 +81,34 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
             lvTargetCheckBox = itemView.findViewById(R.id.lvTargetCheckBox);
             lvTargetStar = itemView.findViewById(R.id.lvTargetStar);
             tvTargetDate = itemView.findViewById(R.id.tvTargetDate);
-
             lvTargetCheckBox.setOnClickListener(this);
             lvTargetStar.setOnClickListener(this);
+            initSoundPoolBuilder();
+        }
 
-            mp = MediaPlayer.create(itemView.getContext(), R.raw.sample);
+        void initSoundPoolBuilder() {
+            AudioAttributes attributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_GAME)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            sp = new SoundPool.Builder()
+                    .setAudioAttributes(attributes)
+                    .build();
+            sp.load(itemView.getContext(), R.raw.sample, 1);
+        }
+
+        void playSound() {
+            AudioManager audioManager = (AudioManager) itemView.getContext().getSystemService(Context.AUDIO_SERVICE);
+            assert audioManager != null;
+            float curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            float maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+            float leftVolume = curVolume / maxVolume;
+            float rightVolume = curVolume / maxVolume;
+            int priority = 1;
+            int no_loop = 0;
+            float normal_playback_rate = 1f;
+            sp.play(1, leftVolume, rightVolume, priority, no_loop,
+                    normal_playback_rate);
         }
 
         void bindCheckBox(int position) {
@@ -113,8 +137,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
                     itemStateArray.put(adapterPosition, true);
                     tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     tvTargetTitle.setTextColor(Color.GRAY);
-                    mp.
-                    mp.start();
+                    playSound();
                 } else {
                     startCheckBoxAnimation();
                     itemStateArray.put(adapterPosition, false);
@@ -122,7 +145,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
                     tvTargetTitle.setTextColor(Color.BLACK);
                 }
 
-            } else if(v == lvTargetStar) {
+            } else if (v == lvTargetStar) {
                 if (!starStateArray.get(adapterPosition, false)) {
                     starStateArray.put(adapterPosition, true);
                     startStarAnimation();
