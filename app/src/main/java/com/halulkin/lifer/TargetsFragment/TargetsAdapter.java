@@ -1,5 +1,6 @@
 package com.halulkin.lifer.TargetsFragment;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -157,12 +158,21 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         }
 
         private void startCheckBoxAnimation() {
-            if (lvTargetCheckBox.getProgress() == 0) {
-                lvTargetCheckBox.playAnimation();
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(400);
+            animator.addUpdateListener(valueAnimator -> lvTargetCheckBox.setProgress((Float) valueAnimator.getAnimatedValue()));
+
+            if (lvTargetCheckBox.getProgress() == 0f) {
+                animator.start();
             } else {
-                lvTargetCheckBox.setProgress(0);
-                lvTargetCheckBox.pauseAnimation();
+                lvTargetCheckBox.setProgress(0f);
             }
+            // Below code do same, but without duration option
+//            if (lvTargetCheckBox.getProgress() == 0) {
+//                lvTargetCheckBox.playAnimation();
+//            } else {
+//                lvTargetCheckBox.setProgress(0);
+//                lvTargetCheckBox.pauseAnimation();
+//            }
         }
 
         private void startStarAnimation() {

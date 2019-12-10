@@ -67,6 +67,7 @@ public class NewTargetTemplate extends AppCompatActivity {
         newTargetsModel.setTargetName(etTargetTitle.getText().toString());
 
         db.addTarget(newTargetsModel);
+        onBackPressed();
     }
 
     public void onClickEditTextTargetDate(View view) {

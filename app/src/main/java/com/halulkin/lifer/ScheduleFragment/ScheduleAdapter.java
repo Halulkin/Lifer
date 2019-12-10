@@ -5,7 +5,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -121,7 +124,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
         TextView tvScheduleTitle;
         CardView cvScheduleTime;
         LottieAnimationView lvScheduleCheckBox;
-        final MediaPlayer mp;
+        SoundPool sp;
 
 
         ViewHolder(View itemView) {
@@ -131,7 +134,32 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
             cvScheduleTime = itemView.findViewById(R.id.cvScheduleTime);
             lvScheduleCheckBox = itemView.findViewById(R.id.lvScheduleCheckBox);
             lvScheduleCheckBox.setOnClickListener(this);
-            mp = MediaPlayer.create(itemView.getContext(), R.raw.sample);
+            initSoundPoolBuilder();
+        }
+
+        void initSoundPoolBuilder() {
+            AudioAttributes attributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_GAME)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            sp = new SoundPool.Builder()
+                    .setAudioAttributes(attributes)
+                    .build();
+            sp.load(itemView.getContext(), R.raw.sample, 1);
+        }
+
+        void playSound() {
+            AudioManager audioManager = (AudioManager) itemView.getContext().getSystemService(Context.AUDIO_SERVICE);
+            assert audioManager != null;
+            float curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            float maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+            float leftVolume = curVolume / maxVolume;
+            float rightVolume = curVolume / maxVolume;
+            int priority = 1;
+            int no_loop = 0;
+            float normal_playback_rate = 1f;
+            sp.play(1, leftVolume, rightVolume, priority, no_loop,
+                    normal_playback_rate);
         }
 
         void bind(int position) {
@@ -145,6 +173,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
         @Override
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
+
             if (!itemStateArray.get(adapterPosition, false)) {
                 itemStateArray.put(adapterPosition, true);
                 startCheckAnimation();
@@ -152,7 +181,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
                 tvScheduleTitle.setTextColor(Color.GRAY);
                 tvScheduleTime.setPaintFlags(tvScheduleTime.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 tvScheduleTime.setTextColor(Color.GRAY);
-                mp.start();
+                playSound();
             } else {
                 itemStateArray.put(adapterPosition, false);
                 startCheckAnimation();
@@ -164,7 +193,7 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
         }
 
         private void startCheckAnimation() {
-            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(450);
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(400);
             animator.addUpdateListener(valueAnimator -> lvScheduleCheckBox.setProgress((Float) valueAnimator.getAnimatedValue()));
 
             if (lvScheduleCheckBox.getProgress() == 0f) {

@@ -73,6 +73,5 @@ public class TargetsFragment extends Fragment {
         db.addTarget(targetsModel2);
         db.addTarget(targetsModel3);
         db.addTarget(targetsModel4);
-
     }
 }

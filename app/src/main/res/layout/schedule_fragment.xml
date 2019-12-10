@@ -25,6 +25,8 @@
             android:id="@+id/rvSchedule"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="200dp"
+            android:clipToPadding="false"
             android:scrollbars="none"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 

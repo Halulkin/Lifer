@@ -42,8 +42,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lvScheduleCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
         app:lottie_autoPlay="false"
         app:lottie_fileName="checkBox.json"
         app:lottie_loop="false"
-        app:lottie_scale="0.4" />
+        app:lottie_scale="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
