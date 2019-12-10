@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.halulkin.lifer.DBHelper;
 import com.halulkin.lifer.R;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
     private List<TargetsModel> targetsModelList = new ArrayList<>();
     private SparseBooleanArray itemStateArray = new SparseBooleanArray();
     private SparseBooleanArray starStateArray = new SparseBooleanArray();
+    private DBHelper db;
 
     TargetsAdapter() {
     }
@@ -85,6 +87,7 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
             lvTargetCheckBox.setOnClickListener(this);
             lvTargetStar.setOnClickListener(this);
             initSoundPoolBuilder();
+            db = new DBHelper(itemView.getContext());
         }
 
         void initSoundPoolBuilder() {
@@ -139,12 +142,16 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
                     tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     tvTargetTitle.setTextColor(Color.GRAY);
                     playSound();
+                    targetsModelList.get(adapterPosition).setTargetStatus(1);
                 } else {
                     startCheckBoxAnimation();
                     itemStateArray.put(adapterPosition, false);
                     tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
                     tvTargetTitle.setTextColor(Color.BLACK);
+                    targetsModelList.get(adapterPosition).setTargetStatus(0);
                 }
+
+                db.updateTarget(targetsModelList.get(adapterPosition));
 
             } else if (v == lvTargetStar) {
                 if (!starStateArray.get(adapterPosition, false)) {

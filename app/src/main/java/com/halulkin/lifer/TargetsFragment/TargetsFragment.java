@@ -16,14 +16,13 @@ import com.halulkin.lifer.DBHelper;
 import com.halulkin.lifer.MainActivity;
 import com.halulkin.lifer.R;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class TargetsFragment extends Fragment {
 
-    public DBHelper db;
-    private List<TargetsModel> targetsData = new ArrayList<>();
+    private DBHelper db;
+    private TargetsAdapter targetsAdapter;
 
     @Nullable
     @Override
@@ -45,33 +44,16 @@ public class TargetsFragment extends Fragment {
         ((MainActivity) getActivity()).changeCollapsingToolbarImage(1);
 
         RecyclerView rvTargets = view.findViewById(R.id.rvTargets);
-        TargetsAdapter targetsAdapter = new TargetsAdapter();
+        targetsAdapter = new TargetsAdapter();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvTargets.setLayoutManager(linearLayoutManager);
         rvTargets.setAdapter(targetsAdapter);
-
-//        fillTargetItems();
-
-        targetsData = db.getAllTargets();
-        targetsAdapter.loadItems(targetsData);
-
-        db.read();
     }
 
-    private void fillTargetItems() {
-        TargetsModel targetsModel1 = new TargetsModel("Wake up at 6 o'clock up at 6 o'clock up at 6 o'clock up at 6 o'clock", "Today", 0);
-        TargetsModel targetsModel2 = new TargetsModel("Run 100 km", "Tomorrow", 1);
-        TargetsModel targetsModel3 = new TargetsModel("Earn 999$", "Yesterday", 0);
-        TargetsModel targetsModel4 = new TargetsModel("Become most strong man ", "Night", 1);
-
-//        targetsData.add(targetsModel1);
-//        targetsData.add(targetsModel2);
-//        targetsData.add(targetsModel3);
-//        targetsData.add(targetsModel4);
-
-        db.addTarget(targetsModel1);
-        db.addTarget(targetsModel2);
-        db.addTarget(targetsModel3);
-        db.addTarget(targetsModel4);
+    @Override
+    public void onResume() {
+        super.onResume();
+        List<TargetsModel> targetsData = db.getAllTargets();
+        targetsAdapter.loadItems(targetsData);
     }
 }

@@ -138,14 +138,10 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_TARGET_DATE, target.getTargetDate());
         values.put(KEY_TARGET_STATUS, target.getTargetStatus());
 
-        int i = db.update(TABLE_NAME, // table
-                values, // column/value
-                "id = ?", // selections
-                new String[]{String.valueOf(target.getTargetId())});
+        // updating row
+        return db.update(TABLE_NAME, values, KEY_TARGET_ID + " = ?",
+                new String[] { String.valueOf(target.getTargetId()) });
 
-        db.close();
-
-        return i;
     }
 
 }
