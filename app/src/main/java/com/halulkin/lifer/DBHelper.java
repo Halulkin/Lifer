@@ -112,7 +112,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void read(){
+    public void read() {
         Cursor cursor = getWritableDatabase().query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
@@ -126,12 +126,12 @@ public class DBHelper extends SQLiteOpenHelper {
                         ", email = " + cursor.getString(dateIndex));
             } while (cursor.moveToNext());
         } else
-            Log.d("mLog","0 rows");
+            Log.d("mLog", "0 rows");
 
         cursor.close();
     }
 
-    public int updateTarget(TargetsModel target) {
+    public void updateTarget(TargetsModel target) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_TARGET_NAME, target.getTargetName());
@@ -139,9 +139,8 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_TARGET_STATUS, target.getTargetStatus());
 
         // updating row
-        return db.update(TABLE_NAME, values, KEY_TARGET_ID + " = ?",
-                new String[] { String.valueOf(target.getTargetId()) });
-
+        db.update(TABLE_NAME, values, KEY_TARGET_ID + " = ?",
+                new String[]{String.valueOf(target.getTargetId())});
     }
 
 }

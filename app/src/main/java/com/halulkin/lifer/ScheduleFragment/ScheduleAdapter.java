@@ -119,6 +119,20 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
+    private void strikeText(TextView tvScheduleTitle, TextView tvScheduleTime) {
+        tvScheduleTitle.setPaintFlags(tvScheduleTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        tvScheduleTitle.setTextColor(Color.GRAY);
+        tvScheduleTime.setPaintFlags(tvScheduleTime.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        tvScheduleTime.setTextColor(Color.GRAY);
+    }
+
+    private void cancelStrike(TextView tvScheduleTitle, TextView tvScheduleTime) {
+        tvScheduleTitle.setPaintFlags(tvScheduleTitle.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+        tvScheduleTitle.setTextColor(Color.BLACK);
+        tvScheduleTime.setPaintFlags(tvScheduleTime.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+        tvScheduleTime.setTextColor(Color.BLACK);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvScheduleTime;
         TextView tvScheduleTitle;
@@ -165,8 +179,10 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
         void bind(int position) {
             if (!itemStateArray.get(position, false)) {
                 lvScheduleCheckBox.setProgress(0F);
+                cancelStrike(tvScheduleTitle, tvScheduleTime);
             } else {
                 lvScheduleCheckBox.setProgress(1f);
+                strikeText(tvScheduleTitle, tvScheduleTime);
             }
         }
 
@@ -177,30 +193,31 @@ class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
             if (!itemStateArray.get(adapterPosition, false)) {
                 itemStateArray.put(adapterPosition, true);
                 startCheckAnimation();
-                tvScheduleTitle.setPaintFlags(tvScheduleTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                tvScheduleTitle.setTextColor(Color.GRAY);
-                tvScheduleTime.setPaintFlags(tvScheduleTime.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                tvScheduleTime.setTextColor(Color.GRAY);
                 playSound();
+                strikeText(tvScheduleTitle, tvScheduleTime);
             } else {
                 itemStateArray.put(adapterPosition, false);
                 startCheckAnimation();
-                tvScheduleTitle.setPaintFlags(tvScheduleTitle.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-                tvScheduleTitle.setTextColor(Color.BLACK);
-                tvScheduleTime.setPaintFlags(tvScheduleTime.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-                tvScheduleTime.setTextColor(Color.BLACK);
+                cancelStrike(tvScheduleTitle, tvScheduleTime);
             }
         }
 
         private void startCheckAnimation() {
-            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(400);
-            animator.addUpdateListener(valueAnimator -> lvScheduleCheckBox.setProgress((Float) valueAnimator.getAnimatedValue()));
-
-            if (lvScheduleCheckBox.getProgress() == 0f) {
-                animator.start();
+            if (lvScheduleCheckBox.getProgress() == 0) {
+                lvScheduleCheckBox.playAnimation();
             } else {
-                lvScheduleCheckBox.setProgress(0f);
+                lvScheduleCheckBox.setProgress(0);
+                lvScheduleCheckBox.pauseAnimation();
             }
+
+//            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(400);
+//            animator.addUpdateListener(valueAnimator -> lvScheduleCheckBox.setProgress((Float) valueAnimator.getAnimatedValue()));
+//
+//            if (lvScheduleCheckBox.getProgress() == 0f) {
+//                animator.start();
+//            } else {
+//                lvScheduleCheckBox.setProgress(0f);
+//            }
         }
 //
 //        void bind(int position) {

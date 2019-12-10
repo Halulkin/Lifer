@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.halulkin.lifer.DBHelper;
 import com.halulkin.lifer.MainActivity;
 import com.halulkin.lifer.R;
 
@@ -21,6 +22,7 @@ import java.util.Objects;
 public class ScheduleFragment extends Fragment {
 
     private List<ScheduleModel> scheduleData = new ArrayList<>();
+    private DBHelper db;
 
     @Nullable
     @Override
@@ -31,6 +33,8 @@ public class ScheduleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        db = new DBHelper(getContext());
 
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
         ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
@@ -48,6 +52,11 @@ public class ScheduleFragment extends Fragment {
 
         scheduleAdapter.loadItems(scheduleData);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     private void fillScheduleItems() {

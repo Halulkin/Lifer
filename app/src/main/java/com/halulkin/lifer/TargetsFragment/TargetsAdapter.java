@@ -1,6 +1,5 @@
 package com.halulkin.lifer.TargetsFragment;
 
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -73,6 +72,16 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         }
     }
 
+    private void strikeText(TextView tvTargetTitle) {
+        tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        tvTargetTitle.setTextColor(Color.GRAY);
+    }
+
+    private void cancelStrike(TextView tvTargetTitle) {
+        tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+        tvTargetTitle.setTextColor(Color.BLACK);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvTargetTitle, tvTargetDate;
         LottieAnimationView lvTargetCheckBox, lvTargetStar;
@@ -118,8 +127,10 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         void bindCheckBox(int position) {
             if (!itemStateArray.get(position, false)) {
                 lvTargetCheckBox.setProgress(0F);
+                cancelStrike(tvTargetTitle);
             } else {
                 lvTargetCheckBox.setProgress(1f);
+                strikeText(tvTargetTitle);
             }
         }
 
@@ -139,15 +150,13 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
                 if (!itemStateArray.get(adapterPosition, false)) {
                     startCheckBoxAnimation();
                     itemStateArray.put(adapterPosition, true);
-                    tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                    tvTargetTitle.setTextColor(Color.GRAY);
+                    strikeText(tvTargetTitle);
                     playSound();
                     targetsModelList.get(adapterPosition).setTargetStatus(1);
                 } else {
                     startCheckBoxAnimation();
                     itemStateArray.put(adapterPosition, false);
-                    tvTargetTitle.setPaintFlags(tvTargetTitle.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
-                    tvTargetTitle.setTextColor(Color.BLACK);
+                    cancelStrike(tvTargetTitle);
                     targetsModelList.get(adapterPosition).setTargetStatus(0);
                 }
 
@@ -165,21 +174,12 @@ class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.ViewHolder> {
         }
 
         private void startCheckBoxAnimation() {
-            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(400);
-            animator.addUpdateListener(valueAnimator -> lvTargetCheckBox.setProgress((Float) valueAnimator.getAnimatedValue()));
-
-            if (lvTargetCheckBox.getProgress() == 0f) {
-                animator.start();
+            if (lvTargetCheckBox.getProgress() == 0) {
+                lvTargetCheckBox.playAnimation();
             } else {
-                lvTargetCheckBox.setProgress(0f);
+                lvTargetCheckBox.setProgress(0);
+                lvTargetCheckBox.pauseAnimation();
             }
-            // Below code do same, but without duration option
-//            if (lvTargetCheckBox.getProgress() == 0) {
-//                lvTargetCheckBox.playAnimation();
-//            } else {
-//                lvTargetCheckBox.setProgress(0);
-//                lvTargetCheckBox.pauseAnimation();
-//            }
         }
 
         private void startStarAnimation() {

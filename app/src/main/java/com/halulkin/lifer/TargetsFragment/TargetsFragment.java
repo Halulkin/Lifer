@@ -37,7 +37,6 @@ public class TargetsFragment extends Fragment {
 
         db = new DBHelper(getContext());
 
-
         ((MainActivity) Objects.requireNonNull(getActivity())).closeDrawer();
         ((MainActivity) Objects.requireNonNull(getActivity())).expandToolbar();
 
